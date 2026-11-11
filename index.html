@@ -1,0 +1,2458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stinko's Corner | index.html</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&family=Nunito:wght@400;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    
+    <style>
+        @font-face {
+            font-family: 'Sigher';
+            src: url('SigherRegular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --brand-green: #9df028;
+            --ink-black: #111111;
+            --pure-white: #ffffff;
+            --dot-red: #ff2a55;
+            --border-thick: 4px solid var(--ink-black);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--pure-white);
+            color: var(--ink-black);
+            overflow-x: hidden;
+            font-size: 1.1rem;
+        }
+
+        button, input {
+            border-radius: 0 !important;
+            outline: none;
+        }
+
+        .comic-font {
+            font-family: 'Sigher', 'Permanent Marker', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .knewave-font {
+            font-family: 'Knewave', cursive;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 1. SCROLLING BANNER #1 */
+        .marquee-green {
+            background-color: var(--brand-green);
+            border-bottom: var(--border-thick);
+            padding: 0.5rem 0;
+            white-space: nowrap;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-green span {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+            font-size: 1.2rem;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* 2. HEADER & NAVIGATION */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%; 
+            /* Hard-locking the height so it stays perfectly slim */
+            height: 80px; 
+            border-bottom: var(--border-thick);
+            background: 
+                linear-gradient(to right, transparent 33.33%, var(--pure-white) 33.33%),
+                url('images/shared/burst.png');
+            background-size: 100% 100%, 800%;
+            background-position: center, top left;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--pure-white);
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        /* Scroll-direction nav reveal. The existing parallax transform still runs independently. */
+        header.nav-scroll-hidden {
+            transform: translateY(-110%);
+        }
+
+        header.nav-scroll-visible {
+            transform: translateY(0);
+        }
+
+        header.nav-scroll-returning .parallax-element {
+            translate: 0 var(--nav-parallax-compensation, 0px);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        translate 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .parallax-element {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .logo img {
+            /* Shrunk down to exactly 100px */
+            height: 100px; 
+            object-fit: contain;
+            display: block; 
+            /* Allows it to bridge the 80px header cleanly */
+            margin: -10px 0; 
+            position: relative;
+            z-index: 110;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav > ul > li {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        nav > ul > li > a {
+            text-decoration: none;
+            color: var(--ink-black);
+            font-size: 1.3rem;
+            /* Links now physically fill the entire vertical height of the tight bar */
+            height: 80px; 
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        nav > ul > li > a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px; 
+            height: 280px; 
+            background-image: url('images/shared/burst.png');
+            background-size: contain; 
+            background-position: center;
+            background-repeat: no-repeat;
+            mix-blend-mode: multiply; 
+            z-index: -1; 
+            opacity: 0;
+            pointer-events: none; 
+        }
+
+        nav > ul > li:hover > a::before {
+            opacity: 1;
+        }
+
+        nav > ul > li:hover > a {
+            color: var(--pure-white);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            /* Because the links are exactly 80px tall, this perfectly snaps to the bottom border */
+            top: 100%;
+            left: 0;
+            background-color: var(--pure-white);
+            border: var(--border-thick);
+            box-shadow: 4px 4px 0px var(--ink-black);
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+            transition: all 0.2s ease;
+            z-index: 200;
+        }
+
+        nav > ul > li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            border-bottom: 2px solid var(--ink-black);
+            width: 100%;
+            display: block;
+        }
+
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--ink-black);
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--brand-green);
+            color: var(--ink-black);
+            background-image: none;
+        }
+
+        .dropdown-menu a:hover::before {
+            display: none;
+        }
+
+        .cart-btn {
+            background-color: var(--brand-green);
+            padding: 0.5rem 1.5rem;
+            border: var(--border-thick);
+            box-shadow: 4px 4px 0px var(--ink-black);
+            text-decoration: none;
+            color: var(--ink-black);
+            font-size: 1.3rem;
+        }
+
+        .cart-btn:hover {
+            background-color: var(--brand-green);
+            color: var(--ink-black);
+            box-shadow: 4px 4px 0px var(--ink-black);
+        }
+
+        /* 3. HERO CAROUSEL */
+        .hero {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            border-bottom: var(--border-thick);
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .floating-sticker {
+            position: absolute;
+            top: 25px;
+            right: 5%;
+            width: 160px; 
+            height: auto;
+            z-index: 10;
+            filter: drop-shadow(4px 4px 0px var(--ink-black)); 
+            animation: float-cute 4s ease-in-out infinite;
+        }
+
+        @keyframes float-cute {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(6deg); } 
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .carousel-img.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 25px;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 24px;
+            height: 24px;
+            background-color: var(--pure-white);
+            border: 3px solid var(--ink-black);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .indicator.active {
+            background-color: var(--brand-green);
+            box-shadow: 2px 2px 0px var(--ink-black);
+        }
+
+        /* 4. MOTTO SECTION */
+        .motto-section {
+            padding: 5rem 4%;
+            background-color: var(--pure-white);
+            border-bottom: var(--border-thick);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .motto-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            min-height: 260px;
+            background-color: var(--pure-white);
+            background-image: url('images/shared/burst.png');
+            background-size: 120% auto; 
+            background-position: center 40%; 
+            background-repeat: no-repeat;
+            border: var(--border-thick);
+            box-shadow: 8px 8px 0px var(--ink-black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 2rem;
+            overflow: hidden; 
+        }
+
+        .motto-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 850px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; 
+        }
+
+        .motto-content h2 {
+            font-size: 3rem;
+            line-height: 1.1;
+            color: var(--ink-black);
+            margin: 0;
+            font-family: 'Knewave', cursive;
+        }
+
+        .motto-content p {
+            font-size: 1.4rem;
+            line-height: 1.4;
+            color: var(--ink-black);
+            font-family: 'Permanent Marker', cursive;
+        }
+
+
+                /* 5. NEW ARRIVALS */
+                .new-arrivals-shell {
+                    background-color: var(--white);
+                    padding: 60px 40px;
+                }
+
+        800&display=swap');
+
+          :root {
+            --black: #111111;
+            --white: #ffffff;
+            --red: #ff2a55;
+            --green: #0df028;
+          }
+        /* Section Container */
+          .new-arrivals-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+          }
+
+          /* Header Typography */
+          .section-title {
+            font-family: 'Knewave', cursive;
+            font-size: 5.5rem;
+            color: var(--black);
+            margin: 0 0 40px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+
+          /* The outer wrapper centers everything */
+          .header-container {
+            margin-bottom: 60px;
+          }
+
+          /* The inner wrapper fits tightly around the text */
+          .link-wrapper {
+            position: relative;
+            display: inline-block; 
+          }
+
+          .shop-link {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.5rem; 
+            color: var(--black);
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.15s ease;
+            position: relative;
+            z-index: 2; 
+          }
+
+          .shop-link:hover {
+            color: var(--green);
+          }
+
+          /* Locks the image exactly to the bottom edge of the link wrapper */
+          .micro-detail {
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110%;
+            max-width: 140px; 
+            margin-top: 8px; /* Small gap below the link */
+            z-index: 1;
+            pointer-events: none; 
+          }
+
+          /* Smoko Grid */
+          .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px 20px; 
+          }
+
+          /* Card formatting */
+          .product-card {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--black);
+            cursor: pointer;
+            text-align: left; 
+          }
+
+          /* Scroll reveal: cards pop upward into place as they enter the viewport. */
+          .product-card.scroll-reveal {
+            opacity: 0;
+            transform: translateY(72px) scale(0.92);
+            transition:
+              opacity 0.55s ease-out,
+              transform 0.72s cubic-bezier(0.22, 1.28, 0.36, 1);
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: transform, opacity;
+          }
+
+          .product-card.scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .product-card.scroll-reveal {
+              opacity: 1;
+              transform: none;
+              transition: none;
+            }
+          }
+
+          /* Burst-shaped product image area */
+          .burst-shadow-container {
+            width: 100%;
+            aspect-ratio: 1348 / 1180;
+            margin-bottom: 15px;
+            filter: drop-shadow(8px 8px 0px var(--black));
+            transition: transform 0.2s ease, filter 0.2s ease;
+          }
+
+          .product-card:hover .burst-shadow-container {
+            transform: translate(-4px, -4px);
+            filter: drop-shadow(10px 10px 0px var(--green));
+          }
+
+          /* The burst shape is vector geometry inside the page, so no external mask file is required. */
+          .burst-image-wrapper {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+
+          /* Full product image is preserved. Nothing is cropped. */
+          .product-shot {
+            opacity: 0;
+          }
+
+          .product-shot.shot-1 {
+            opacity: 1;
+          }
+
+          /* Product-card hover action, matching the reference behavior.
+             New Arrivals shows ADD TO CART; Coming Soon shows NOTIFY ME. */
+          .burst-shadow-container {
+            position: relative;
+          }
+
+          .product-hover-action {
+            position: absolute;
+            left: 50%;
+            bottom: 7%;
+            z-index: 5;
+            min-width: 145px;
+            padding: 0.9rem 1.2rem;
+            transform: translate(-50%, 14%) scale(0.94);
+            background: var(--ink-black);
+            color: var(--pure-white);
+            border: 4px solid var(--pure-white);
+            box-shadow: 5px 5px 0 var(--ink-black);
+            font-family: 'Knewave', cursive;
+            font-size: 1.05rem;
+            line-height: 1;
+            text-align: center;
+            text-transform: uppercase;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.16s ease, transform 0.16s ease;
+          }
+
+          .product-card:hover .product-hover-action,
+          .product-card:focus-visible .product-hover-action {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+          }
+
+          /* Text formatting */
+          .product-name {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin: 0 0 4px 0;
+            text-transform: uppercase;
+          }
+
+          .product-price {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin: 0;
+          }
+
+          /* Responsive fallback */
+          @media (max-width: 900px) {
+            .product-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+
+          @media (max-width: 500px) {
+            .product-grid {
+              grid-template-columns: 1fr;
+            }
+          }
+
+        /* Safe white buffer for the approved V7 collection burst.
+           This gives the full undistorted burst room to cross the collection
+           divider lines without entering the Coming Soon or next section content. */
+        .collections-stage {
+          position: relative;
+          background: var(--pure-white);
+          padding: 300px 0;
+          z-index: 1;
+        }
+
+        @media (max-width: 900px) {
+          .collections-stage {
+            padding: 220px 0;
+          }
+        }
+
+        /* 7. SHOP BY COLLECTION - APPROVED V7 */
+    .collections-section {
+      /* V7 local color aliases so the approved collection styling resolves correctly inside the full site. */
+      --black: var(--ink-black);
+      --white: var(--pure-white);
+      --green: var(--brand-green);
+      --red: var(--dot-red);
+      position: relative;
+      overflow: visible;
+      border-top: var(--border-thick);
+      border-bottom: var(--border-thick);
+      background: transparent;
+      padding: 70px 2.5% 82px;
+      min-height: 690px;
+      z-index: 2;
+    }
+
+    /* Real burst artwork, never stretched. Its natural aspect ratio is preserved.
+       The visible tips intentionally extend into the sections above and below. */
+    .section-burst-bg {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(1650px, 118vw);
+      height: auto;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .collections-inner {
+      width: min(1560px, 100%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .collections-section .section-title {
+      font-family: 'Knewave', cursive;
+      font-size: clamp(3.2rem, 5vw, 4.7rem);
+      line-height: 0.95;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0 0 38px;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      align-items: start;
+      padding: 0;
+    }
+
+    .collection-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .burst-frame {
+      width: 100%;
+      max-width: none;
+      aspect-ratio: 1348 / 1180;
+      filter: drop-shadow(8px 8px 0 var(--black));
+    }
+
+    .burst-frame svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+
+    .collections-section .collection-btn {
+      margin-top: 18px;
+      min-width: 205px;
+      padding: 0.85rem 1.25rem;
+      background: var(--black);
+      color: var(--white);
+      border: 4px solid var(--white);
+      box-shadow: 5px 5px 0 var(--black);
+      font-family: 'Knewave', cursive;
+      font-size: 1.12rem;
+      line-height: 1;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .collection-footer {
+      position: relative;
+      margin-top: 48px;
+      min-height: 88px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .footer-link-wrap {
+      position: relative;
+      display: inline-block;
+      z-index: 3;
+    }
+
+    .footer-link {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--black);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .collections-section a.footer-link:hover,
+    .collections-section a.footer-link:focus-visible {
+      color: #ff2a55 !important;
+    }
+
+    .collections-section .micro-detail {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110%;
+      max-width: 180px;
+      margin-top: 8px;
+      pointer-events: none;
+    }
+
+    .floating-cute {
+      position: absolute;
+      right: 1.5%;
+      bottom: -5px;
+      width: 145px;
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+      filter: drop-shadow(4px 4px 0 var(--black));
+      animation: float-random 7.5s ease-in-out infinite;
+    }
+
+    @keyframes float-random {
+      0%   { transform: translate(0, 0) rotate(0deg); }
+      22%  { transform: translate(-9px, -12px) rotate(3deg); }
+      46%  { transform: translate(8px, -18px) rotate(-2deg); }
+      69%  { transform: translate(-5px, -6px) rotate(2deg); }
+      84%  { transform: translate(7px, -10px) rotate(-3deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .floating-cute { animation: none; }
+    }
+
+    @media (max-width: 900px) {
+      .collections-section {
+        padding: 60px 28px 92px;
+      }
+
+      .section-burst-bg {
+        width: min(1250px, 170vw);
+      }
+
+      .section-burst-bg {
+        width: min(920px, 135vw);
+      }
+
+      .collection-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .burst-frame { max-width: 315px; }
+      .collection-footer { margin-top: 34px; }
+      .floating-cute { width: 115px; }
+    }
+
+    
+
+        /* 8. SHOP BY CHARACTER - APPROVED */
+        .characters-shell {
+          background: var(--pure-white);
+          padding: 78px 2.5% 88px;
+          border-bottom: var(--border-thick);
+        }
+
+        .characters-inner {
+          width: min(1600px, 100%);
+          margin: 0 auto;
+        }
+
+        .characters-shell .section-title {
+          font-family: 'Knewave', cursive;
+          font-size: clamp(3.2rem, 5vw, 4.7rem);
+          line-height: 0.95;
+          text-align: center;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin: 0 0 44px;
+          color: var(--ink-black);
+        }
+
+        .character-grid {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 18px;
+          align-items: start;
+        }
+
+        .character-grid.scroll-reveal {
+          opacity: 0;
+          transform: translateY(72px) scale(0.94);
+          transition: opacity 0.5s ease-out, transform 0.7s cubic-bezier(0.22, 1.28, 0.36, 1);
+          will-change: transform, opacity;
+        }
+
+        .character-grid.scroll-reveal.is-visible {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        .character-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-width: 0;
+          cursor: pointer;
+        }
+
+        .characters-shell .burst-frame {
+          width: 100%;
+          max-width: none;
+          aspect-ratio: 1348 / 1180;
+          filter: drop-shadow(8px 8px 0 var(--ink-black));
+        }
+
+        .characters-shell .burst-frame svg {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+
+        .character-shot {
+          opacity: 0;
+          transition: opacity 0.12s linear;
+        }
+
+        .character-shot.shot-1 { opacity: 1; }
+
+        .character-name {
+          margin-top: 18px;
+          margin-bottom: 10px;
+          text-align: center;
+          font-family: 'Nunito', sans-serif;
+          font-weight: 800;
+          font-size: 1.15rem;
+          line-height: 1.1;
+          text-transform: uppercase;
+          color: var(--ink-black);
+        }
+
+        /* 9. LOWER SCROLLING BANNER - APPROVED */
+        .lower-marquee {
+          width: 100%;
+          overflow: hidden;
+          background: var(--brand-green);
+          border-top: var(--border-thick);
+          border-bottom: var(--border-thick);
+          min-height: 64px;
+          padding: 0;
+          margin-top: -4px;
+          display: flex;
+          align-items: center;
+        }
+
+        .lower-marquee-track {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          animation: lower-marquee-scroll 18s linear infinite;
+          will-change: transform;
+        }
+
+        .lower-marquee-group {
+          display: flex;
+          flex-shrink: 0;
+          align-items: center;
+        }
+
+        .lower-marquee-item {
+          display: inline-block;
+          padding: 0 2rem;
+          font-family: 'Knewave', cursive;
+          font-size: clamp(1.35rem, 2.2vw, 2rem);
+          line-height: 1.15;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          white-space: nowrap;
+          color: var(--ink-black);
+        }
+
+        .lower-marquee-separator {
+          font-family: 'Knewave', cursive;
+          font-size: clamp(1.15rem, 1.8vw, 1.7rem);
+          line-height: 1.15;
+          color: var(--ink-black);
+          white-space: nowrap;
+        }
+
+        @keyframes lower-marquee-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+
+        /* 10. SOCIAL PROOF - APPROVED */
+        .social-proof-section {
+          background: var(--pure-white);
+          padding: 76px 2.5% 90px;
+          border-top: 4px solid var(--ink-black);
+          border-bottom: 4px solid var(--ink-black);
+          margin-top: -4px;
+        }
+
+        .social-proof-inner {
+          width: min(1560px, 100%);
+          margin: 0 auto;
+        }
+
+        .social-proof-title {
+          margin: 0 0 42px;
+          text-align: center;
+          font-family: 'Knewave', cursive;
+          font-size: clamp(3rem, 5vw, 4.7rem);
+          line-height: .95;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .social-post-grid {
+          display: grid;
+          grid-template-columns: repeat(7, minmax(0, 1fr));
+          gap: 24px 20px;
+          align-items: center;
+          justify-items: center;
+        }
+
+        .social-post-link {
+          width: 100%;
+          max-width: 150px;
+          aspect-ratio: 1 / 1;
+          display: block;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 4px solid var(--ink-black);
+          background: var(--pure-white);
+          text-decoration: none;
+          transition: box-shadow .14s ease, transform .14s ease;
+        }
+
+        .social-post-link img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+
+        .social-post-link:hover,
+        .social-post-link:focus-visible {
+          transform: translateY(-3px);
+          box-shadow: 6px 6px 0 var(--brand-green);
+        }
+
+        .social-post-link:focus-visible {
+          outline: 3px solid var(--ink-black);
+          outline-offset: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .character-grid.scroll-reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+          .character-shot { transition: none; }
+          .lower-marquee-track { animation: none; }
+        }
+
+        @media (max-width: 1250px) {
+          .character-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+          }
+        }
+
+        @media (max-width: 1100px) {
+          .social-post-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 760px) {
+          .characters-shell { padding: 64px 5% 72px; }
+          .character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .social-proof-section { padding: 58px 18px 68px; }
+          .social-post-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px 14px;
+          }
+        }
+
+        @media (max-width: 520px) {
+          .characters-shell .section-title { margin-bottom: 34px; }
+          .character-grid {
+            grid-template-columns: 1fr;
+            gap: 26px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .social-post-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+
+    
+    /* STINKO CURSOR TRAIL
+       Motion behavior matches Smoko's cursor-trail implementation.
+       Only the particle artwork is Stinko's. */
+    .stinko-cursor-trail-layer {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2147483647;
+    }
+
+    .stinko-cursor-trail-particle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      will-change: transform, opacity;
+    }
+
+    @media (pointer: coarse), (prefers-reduced-motion: reduce) {
+      .stinko-cursor-trail-layer { display: none !important; }
+    }
+
+
+
+    /* 11. APPROVED DOUBLE FOOTER */
+.stinko-footer { --stinko-green: #9df028; --stinko-black: #111111; --stinko-white: #ffffff; --stinko-red: #ff2a55; --stinko-border: 4px solid var(--stinko-black); }
+.stinko-footer {
+      position: relative;
+      width: 100%;
+    }
+
+    /* FOOTER 1: main utility / signup footer */
+    .stinko-footer-main {
+      position: relative;
+      overflow: visible;
+      background: var(--stinko-green);
+      color: var(--stinko-black);
+      border-top: var(--stinko-border);
+      padding: 64px 5% 118px;
+    }
+
+    .stinko-footer-grid {
+      width: min(1480px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .9fr .9fr 1fr 1.65fr;
+      gap: 46px;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stinko-footer-heading {
+      margin: 0 0 20px;
+      font-family: 'Knewave', cursive;
+      font-size: 1.55rem;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+    }
+
+    .stinko-footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .stinko-footer-links a,
+    .stinko-footer-legal a,
+    .stinko-footer-socials a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 800;
+      transition: color .15s ease;
+    }
+
+    .stinko-footer-links a:hover,
+    .stinko-footer-links a:focus-visible {
+      color: var(--stinko-red);
+    }
+
+    .stinko-email p {
+      margin: 0 0 18px;
+      max-width: 460px;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .stinko-email-form {
+      display: flex;
+      width: min(100%, 500px);
+      border: 4px solid var(--stinko-black);
+      background: var(--stinko-white);
+      box-shadow: 6px 6px 0 var(--stinko-black);
+    }
+
+    .stinko-email-form input {
+      min-width: 0;
+      flex: 1;
+      border: 0;
+      outline: 0;
+      background: var(--stinko-white);
+      color: var(--stinko-black);
+      padding: 15px 16px;
+      font: 800 1rem 'Nunito', sans-serif;
+    }
+
+    .stinko-email-form input::placeholder {
+      color: #666;
+      opacity: 1;
+    }
+
+    .stinko-email-form button {
+      border: 0;
+      border-left: 4px solid var(--stinko-black);
+      background: var(--stinko-black);
+      color: var(--stinko-white);
+      padding: 0 22px;
+      font-family: 'Knewave', cursive;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .stinko-email-form button:hover,
+    .stinko-email-form button:focus-visible {
+      background: var(--stinko-red);
+    }
+
+    /* Character lineup sits across the color break, like the reference site's character art. */
+    .stinko-footer-characters {
+      position: absolute;
+      right: 4%;
+      bottom: -76px;
+      width: min(420px, 33vw);
+      min-width: 260px;
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+      display: block;
+      filter: drop-shadow(5px 5px 0 rgba(17,17,17,.22));
+    }
+
+    /* FOOTER 2: contrasting legal / social footer */
+    .stinko-footer-bottom {
+      position: relative;
+      z-index: 3;
+      background: var(--stinko-black);
+      color: var(--stinko-white);
+      padding: 84px 5% 30px;
+      min-height: 150px;
+    }
+
+    .stinko-footer-bottom-inner {
+      width: min(1480px, 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      position: relative;
+      z-index: 2;
+      padding-right: min(460px, 35vw);
+    }
+
+    .stinko-footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      align-items: center;
+      font-size: .83rem;
+      font-weight: 800;
+    }
+
+    .stinko-footer-legal a:hover,
+    .stinko-footer-legal a:focus-visible,
+    .stinko-footer-socials a:hover,
+    .stinko-footer-socials a:focus-visible {
+      color: var(--stinko-green);
+    }
+
+    .stinko-footer-socials {
+      display: flex;
+      gap: 16px;
+      font-size: .9rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1050px) {
+      .stinko-footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stinko-email {
+        grid-column: span 2;
+      }
+
+      .stinko-footer-characters {
+        width: 330px;
+        right: 3%;
+      }
+
+      .stinko-footer-bottom-inner {
+        padding-right: 330px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .stinko-footer-main {
+        padding: 50px 28px 150px;
+      }
+
+      .stinko-footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 34px 24px;
+      }
+
+      .stinko-email {
+        grid-column: 1 / -1;
+      }
+
+      .stinko-email-form {
+        flex-direction: column;
+      }
+
+      .stinko-email-form button {
+        min-height: 50px;
+        border-left: 0;
+        border-top: 4px solid var(--stinko-black);
+      }
+
+      .stinko-footer-characters {
+        left: 50%;
+        right: auto;
+        bottom: -82px;
+        width: min(360px, 80vw);
+        min-width: 0;
+        transform: translateX(-50%);
+      }
+
+      .stinko-footer-bottom {
+        padding: 112px 28px 30px;
+      }
+
+      .stinko-footer-bottom-inner {
+        padding-right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stinko-footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stinko-email {
+        grid-column: auto;
+      }
+    }
+  
+
+</style>
+</head>
+<body>
+
+    <!-- 1. SCROLLING BANNER #1 -->
+    <div class="marquee-green">
+        <span class="comic-font">
+            WARNING: OFFENSIVE MATERIAL INSIDE &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; FREE DOMESTIC SHIPPING OVER $35 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; NEW DROPS WEEKLY
+        </span>
+    </div>
+
+    <!-- 2. HEADER -->
+    <header id="main-header">
+        <div class="logo parallax-element">
+            <a href="index.html">
+                <img src="images/header/logo.png" alt="Stinko's Corner Logo">
+            </a>
+        </div>
+        <nav class="parallax-element">
+            <ul class="knewave-font">
+                <li>
+                    <a href="#new-arrivals">New Arrivals</a>
+                    <ul class="dropdown-menu"></ul>
+                </li>
+                <li>
+                    <a href="shop-all.html">Shop All</a>
+                    <ul class="dropdown-menu"></ul>
+                </li>
+                <li>
+                    <a href="#collections">Collections</a>
+                    <ul class="dropdown-menu"></ul>
+                </li>
+                <li>
+                    <a href="#characters">Characters</a>
+                    <ul class="dropdown-menu"></ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="parallax-element">
+            <a href="#" class="cart-btn knewave-font">CART (0)</a>
+        </div>
+    </header>
+
+    <!-- 3. HERO CAROUSEL -->
+    <section class="hero" id="hero">
+        <img src="images/hero/cute-sticker.png" alt="Floating cute sticker" class="floating-sticker">
+        
+        <div class="carousel-container">
+            <img src="images/hero/image1.png" class="carousel-img active" alt="Carousel Image 1">
+            <img src="images/hero/image2.png" class="carousel-img" alt="Carousel Image 2">
+            <img src="images/hero/image3.png" class="carousel-img" alt="Carousel Image 3">
+        </div>
+
+        <div class="carousel-indicators">
+            <button class="indicator active" data-slide="0" aria-label="Slide 1"></button>
+            <button class="indicator" data-slide="1" aria-label="Slide 2"></button>
+            <button class="indicator" data-slide="2" aria-label="Slide 3"></button>
+        </div>
+    </section>
+
+    <!-- 4. MOTTO SECTION -->
+    <section class="motto-section">
+        <div class="motto-container">
+            <div class="motto-content">
+                <h2>Stickers and accessories sure to offend.</h2>
+                <p>Top quality materials used to ensure your bumper maintains its aggressive attitude. Keep your inside thoughts on the outside.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. NEW ARRIVALS -->
+    <section class="new-arrivals-shell" id="new-arrivals">
+        <div class="new-arrivals-section">
+        <h2 class="section-title">New Arrivals</h2>
+    
+        <div class="header-container">
+          <div class="link-wrapper">
+            <a href="new-arrivals.html" class="shop-link">Shop All New</a>
+            <img src="images/shared/detail1.png" alt="Hand drawn underline" class="micro-detail">
+          </div>
+        </div>
+
+        <div class="product-grid">
+      
+          <!-- Card 1 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="burstClip1" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#burstClip1)">
+                  <image class="product-shot shot-1" href="images/new-arrivals/newarrival1-1.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/new-arrivals/newarrival1-2.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/new-arrivals/newarrival1-3.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Add to Cart</span>
+            </div>
+            <h3 class="product-name">The Shithead Family Decal</h3>
+            <p class="product-price">$6.00</p>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="burstClip2" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#burstClip2)">
+                  <image class="product-shot shot-1" href="images/new-arrivals/newarrival2-1.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/new-arrivals/newarrival2-2.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/new-arrivals/newarrival2-3.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Add to Cart</span>
+            </div>
+            <h3 class="product-name">Classic Logo Sticker</h3>
+            <p class="product-price">$3.50</p>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="burstClip3" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#burstClip3)">
+                  <image class="product-shot shot-1" href="images/new-arrivals/newarrival3-1.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/new-arrivals/newarrival3-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/new-arrivals/newarrival3-3.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Add to Cart</span>
+            </div>
+            <h3 class="product-name">Custom Mini Button</h3>
+            <p class="product-price">$2.50</p>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="burstClip4" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#burstClip4)">
+                  <image class="product-shot shot-1" href="images/new-arrivals/newarrival4-1.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/new-arrivals/newarrival4-2.jpg" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/new-arrivals/newarrival4-3.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Add to Cart</span>
+            </div>
+            <h3 class="product-name">Handmade Notepad</h3>
+            <p class="product-price">$8.00</p>
+          </a>
+
+        </div>
+        </div>
+      </section>
+
+    <!-- 6. COMING SOON -->
+    <section class="new-arrivals-shell" id="coming-soon">
+        <div class="new-arrivals-section">
+        <h2 class="section-title">Coming Soon</h2>
+    
+        <div class="header-container">
+          <div class="link-wrapper">
+            <a href="#" class="shop-link">Sign Up for Email Alerts</a>
+            <img src="images/shared/detail1.png" alt="Hand drawn underline" class="micro-detail">
+          </div>
+        </div>
+
+        <div class="product-grid">
+      
+          <!-- Card 1 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="comingSoonBurstClip1" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#comingSoonBurstClip1)">
+                  <image class="product-shot shot-1" href="images/coming-soon/comingsoon1-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/coming-soon/comingsoon1-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/coming-soon/comingsoon1-3.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Notify Me</span>
+            </div>
+            <h3 class="product-name">The Shithead Family Decal</h3>
+            <p class="product-price">$6.00</p>
+          </a>
+
+          <!-- Card 2 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="comingSoonBurstClip2" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#comingSoonBurstClip2)">
+                  <image class="product-shot shot-1" href="images/coming-soon/comingsoon2-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/coming-soon/comingsoon2-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/coming-soon/comingsoon2-3.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Notify Me</span>
+            </div>
+            <h3 class="product-name">Classic Logo Sticker</h3>
+            <p class="product-price">$3.50</p>
+          </a>
+
+          <!-- Card 3 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="comingSoonBurstClip3" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#comingSoonBurstClip3)">
+                  <image class="product-shot shot-1" href="images/coming-soon/comingsoon3-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/coming-soon/comingsoon3-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/coming-soon/comingsoon3-3.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Notify Me</span>
+            </div>
+            <h3 class="product-name">Custom Mini Button</h3>
+            <p class="product-price">$2.50</p>
+          </a>
+
+          <!-- Card 4 -->
+          <a href="#" class="product-card">
+            <div class="burst-shadow-container">
+              <svg class="burst-image-wrapper" viewBox="0 0 1348 1180" role="img" aria-label="Product images">
+                <defs>
+                  <clipPath id="comingSoonBurstClip4" clipPathUnits="userSpaceOnUse">
+                    <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#comingSoonBurstClip4)">
+                  <image class="product-shot shot-1" href="images/coming-soon/comingsoon4-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-2" href="images/coming-soon/comingsoon4-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                  <image class="product-shot shot-3" href="images/coming-soon/comingsoon4-3.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                </g>
+                <path class="burst-outline" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+              </svg>
+              <span class="product-hover-action">Notify Me</span>
+            </div>
+            <h3 class="product-name">Handmade Notepad</h3>
+            <p class="product-price">$8.00</p>
+          </a>
+
+        </div>
+        </div>
+      </section>
+
+    <!-- 7. SHOP BY COLLECTION -->
+  <div class="collections-stage">
+  <section class="collections-section" id="collections">
+    <img src="images/shared/burst.png" alt="" aria-hidden="true" class="section-burst-bg">
+
+    <div class="collections-inner">
+      <h2 class="section-title">Shop By Collection</h2>
+
+      <div class="collection-grid">
+        <div class="collection-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Vinyl Decals collection">
+              <defs>
+                <clipPath id="collectionClip1" clipPathUnits="userSpaceOnUse">
+                  <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#collectionClip1)">
+                <image href="images/collections/collection1-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+              </g>
+              <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <a href="#" class="collection-btn">Vinyl Decals</a>
+        </div>
+
+        <div class="collection-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Stationery collection">
+              <defs>
+                <clipPath id="collectionClip2" clipPathUnits="userSpaceOnUse">
+                  <use href="#collectionShape"></use>
+                </clipPath>
+                <path id="collectionShape" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+              </defs>
+              <g clip-path="url(#collectionClip2)"><image href="images/collections/collection2-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image></g>
+              <use href="#collectionShape" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></use>
+            </svg>
+          </div>
+          <a href="#" class="collection-btn">Stationery</a>
+        </div>
+
+        <div class="collection-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Accessories collection">
+              <defs>
+                <clipPath id="collectionClip3" clipPathUnits="userSpaceOnUse"><use href="#collectionShape3"></use></clipPath>
+                <path id="collectionShape3" d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+              </defs>
+              <g clip-path="url(#collectionClip3)"><image href="images/collections/collection3-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image></g>
+              <use href="#collectionShape3" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></use>
+            </svg>
+          </div>
+          <a href="#" class="collection-btn">Accessories</a>
+        </div>
+      </div>
+
+      <div class="collection-footer">
+        <div class="footer-link-wrap">
+          <a href="shop-all.html" class="footer-link">Shop All Collections</a>
+          <img src="images/shared/detail1.png" alt="Hand drawn underline" class="micro-detail">
+        </div>
+      </div>
+
+      <img src="images/collections/float2.png" alt="Floating decorative art" class="floating-cute">
+    </div>
+  </section>
+  </div>
+
+    <!-- 8. SHOP BY CHARACTER -->
+<section class="characters-shell" id="characters">
+    <div class="characters-inner">
+      <h2 class="section-title">Shop By Character</h2>
+
+      <div class="character-grid scroll-reveal" id="character-grid">
+        <div class="character-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Character 1 products">
+              <defs>
+                <clipPath id="characterBurstClip1" clipPathUnits="userSpaceOnUse">
+                  <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#characterBurstClip1)">
+                <image class="character-shot shot-1" href="images/characters/character1-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                <image class="character-shot shot-2" href="images/characters/character1-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+              </g>
+              <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="character-name">Character 1</h3>
+        </div>
+
+        <div class="character-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Character 2 products">
+              <defs><clipPath id="characterBurstClip2" clipPathUnits="userSpaceOnUse"><path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path></clipPath></defs>
+              <g clip-path="url(#characterBurstClip2)">
+                <image class="character-shot shot-1" href="images/characters/character2-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                <image class="character-shot shot-2" href="images/characters/character2-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+              </g>
+              <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="character-name">Character 2</h3>
+        </div>
+
+        <div class="character-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Character 3 products">
+              <defs><clipPath id="characterBurstClip3" clipPathUnits="userSpaceOnUse"><path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path></clipPath></defs>
+              <g clip-path="url(#characterBurstClip3)">
+                <image class="character-shot shot-1" href="images/characters/character3-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                <image class="character-shot shot-2" href="images/characters/character3-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+              </g>
+              <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="character-name">Character 3</h3>
+        </div>
+
+        <div class="character-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Character 4 products">
+              <defs><clipPath id="characterBurstClip4" clipPathUnits="userSpaceOnUse"><path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path></clipPath></defs>
+              <g clip-path="url(#characterBurstClip4)">
+                <image class="character-shot shot-1" href="images/characters/character4-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                <image class="character-shot shot-2" href="images/characters/character4-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+              </g>
+              <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="character-name">Character 4</h3>
+        </div>
+
+        <div class="character-card">
+          <div class="burst-frame">
+            <svg viewBox="0 0 1348 1180" role="img" aria-label="Character 5 products">
+              <defs><clipPath id="characterBurstClip5" clipPathUnits="userSpaceOnUse"><path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z"></path></clipPath></defs>
+              <g clip-path="url(#characterBurstClip5)">
+                <image class="character-shot shot-1" href="images/characters/character5-1.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+                <image class="character-shot shot-2" href="images/characters/character5-2.png" x="0" y="0" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"></image>
+              </g>
+              <path d="M 1188 130 L 1100 183 L 1041 213 L 988 232 L 956 235 L 957 218 L 966 179 L 914 214 L 905 200 L 900 185 L 895 123 L 908 8 L 857 83 L 810 141 L 784 167 L 758 187 L 737 198 L 716 203 L 692 167 L 667 117 L 643 169 L 638 173 L 594 121 L 546 42 L 540 130 L 531 184 L 517 229 L 501 256 L 453 240 L 415 220 L 370 191 L 384 252 L 385 294 L 316 276 L 220 236 L 272 310 L 291 345 L 301 372 L 286 375 L 242 375 L 168 367 L 200 397 L 228 429 L 247 461 L 251 476 L 208 491 L 164 500 L 104 508 L 33 513 L 120 546 L 170 572 L 162 578 L 95 602 L 185 632 L 215 648 L 214 656 L 196 684 L 158 719 L 103 757 L 8 811 L 110 799 L 188 798 L 206 802 L 175 833 L 256 822 L 264 832 L 269 851 L 268 868 L 255 907 L 223 963 L 159 1050 L 242 1000 L 302 969 L 352 950 L 392 945 L 382 1001 L 433 966 L 443 981 L 449 1001 L 452 1024 L 452 1071 L 440 1171 L 487 1102 L 544 1032 L 591 992 L 616 980 L 631 977 L 654 1010 L 681 1063 L 708 1006 L 728 1026 L 755 1061 L 802 1139 L 806 1066 L 815 1003 L 828 957 L 846 924 L 870 930 L 899 942 L 976 988 L 963 923 L 963 886 L 1032 904 L 1128 944 L 1071 862 L 1058 838 L 1047 808 L 1062 805 L 1106 805 L 1180 813 L 1140 775 L 1119 750 L 1105 728 L 1096 705 L 1125 693 L 1183 680 L 1314 667 L 1230 635 L 1178 608 L 1179 605 L 1254 578 L 1170 551 L 1136 534 L 1132 528 L 1139 513 L 1155 492 L 1192 459 L 1251 419 L 1339 369 L 1248 380 L 1160 382 L 1142 378 L 1173 346 L 1103 357 L 1091 357 L 1086 352 L 1079 333 L 1079 316 L 1092 274 L 1122 221 Z" fill="none" stroke="#111111" stroke-width="16" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+          <h3 class="character-name">Character 5</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- 9. LOWER SCROLLING BANNER -->
+<div class="lower-marquee" aria-label="Make your shit weirder">
+    <div class="lower-marquee-track">
+      <div class="lower-marquee-group">
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+      </div>
+      <div class="lower-marquee-group" aria-hidden="true">
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+        <span class="lower-marquee-item">MAKE YOUR SHIT WEIRDER!</span><span class="lower-marquee-separator">★</span>
+      </div>
+    </div>
+</div>
+
+    <!-- 10. SOCIAL PROOF -->
+<section class="social-proof-section" id="social-proof" aria-labelledby="social-proof-heading">
+    <div class="social-proof-inner">
+      <h2 class="social-proof-title" id="social-proof-heading">Stinko's Corner In The Wild</h2>
+
+      <div class="social-post-grid">
+        <!-- Replace each # with the real social-post URL. -->
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 1"><img src="images/social/social1.jpg" alt="Stinko's Corner social post 1"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 2"><img src="images/social/social2.jpg" alt="Stinko's Corner social post 2"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 3"><img src="images/social/social3.jpg" alt="Stinko's Corner social post 3"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 4"><img src="images/social/social4.jpg" alt="Stinko's Corner social post 4"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 5"><img src="images/social/social5.jpg" alt="Stinko's Corner social post 5"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 6"><img src="images/social/social6.jpg" alt="Stinko's Corner social post 6"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 7"><img src="images/social/social7.jpg" alt="Stinko's Corner social post 7"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 8"><img src="images/social/social8.jpg" alt="Stinko's Corner social post 8"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 9"><img src="images/social/social9.jpg" alt="Stinko's Corner social post 9"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 10"><img src="images/social/social10.jpg" alt="Stinko's Corner social post 10"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 11"><img src="images/social/social11.jpg" alt="Stinko's Corner social post 11"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 12"><img src="images/social/social12.jpg" alt="Stinko's Corner social post 12"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 13"><img src="images/social/social13.jpg" alt="Stinko's Corner social post 13"></a>
+        <a class="social-post-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open social post 14"><img src="images/social/social14.jpg" alt="Stinko's Corner social post 14"></a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 11. APPROVED DOUBLE FOOTER -->
+<footer class="stinko-footer">
+<!-- FOOTER 1 -->
+<section aria-label="Footer navigation and email signup" class="stinko-footer-main">
+<div class="stinko-footer-grid">
+<div>
+<h2 class="stinko-footer-heading">Help</h2>
+<ul class="stinko-footer-links">
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="shipping.html">Shipping</a></li>
+<li><a href="returns.html">Returns</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="accessibility.html">Accessibility</a></li>
+</ul>
+</div>
+<div>
+<h2 class="stinko-footer-heading">Info</h2>
+<ul class="stinko-footer-links">
+<li><a href="about.html">About Stinko's Corner</a></li>
+<li><a href="wholesale.html">Wholesale</a></li>
+<li><a href="stockists.html">Stockists</a></li>
+<li><a href="press.html">Press</a></li>
+</ul>
+</div>
+<div>
+<h2 class="stinko-footer-heading">Quick Links</h2>
+<ul class="stinko-footer-links">
+<li><a href="#new-arrivals">New Arrivals</a></li>
+<li><a href="shop-all.html">Shop All</a></li>
+<li><a href="#collections">Collections</a></li>
+<li><a href="#characters">Characters</a></li>
+<li><a href="sticker-packs.html">Sticker Packs</a></li>
+</ul>
+</div>
+<div class="stinko-email">
+<h2 class="stinko-footer-heading">Join Stinko's List</h2>
+<p>Drops, restocks, new characters, and whatever nonsense Stinko gets into next.</p>
+<form action="#" class="stinko-email-form" method="post">
+<input aria-label="Email address" name="email" placeholder="YOUR EMAIL" type="email"/>
+<button type="submit">Sign Up</button>
+</form>
+</div>
+</div>
+<img alt="" aria-hidden="true" class="stinko-footer-characters" src="images/footer/footer-characters.png"/>
+</section>
+<!-- FOOTER 2 -->
+<section aria-label="Legal and social links" class="stinko-footer-bottom">
+<div class="stinko-footer-bottom-inner">
+<div class="stinko-footer-legal">
+<span>© 2026 Stinko's Corner</span>
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms</a>
+<a href="#">Shipping &amp; Returns</a>
+<a href="accessibility.html">Accessibility</a>
+</div>
+<div class="stinko-footer-socials">
+<a href="#" rel="noopener" target="_blank">TikTok</a>
+<a href="#" rel="noopener" target="_blank">Instagram</a>
+</div>
+</div>
+</section>
+</footer>
+
+    <!-- CATALOG DATA: generated from Stinkos_Product_Catalog.xlsx -->
+    <script src="data/catalog.js"></script>
+    <script>
+        // Spreadsheet-driven catalog binding.
+        // The approved HTML below remains as a visual fallback if catalog.js is unavailable.
+        (function bindCatalogData() {
+            const catalog = window.STINKOS_CATALOG;
+            if (!catalog) {
+                console.warn("Stinko's catalog data was not loaded. Keeping the built-in fallback card content.");
+                return;
+            }
+
+            const formatPrice = (value) => {
+                const numeric = Number(value);
+                if (!Number.isFinite(numeric)) return '';
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD'
+                }).format(numeric);
+            };
+
+            const byPosition = (a, b) => {
+                const aPos = Number(a.homepage_position) || 9999;
+                const bPos = Number(b.homepage_position) || 9999;
+                return aPos - bPos;
+            };
+
+            const resolveSectionImage = (filename, folder) => {
+                if (!filename) return '';
+                const value = String(filename).trim();
+                if (/^(?:https?:|data:|\/)/i.test(value) || value.includes('/')) return value;
+                return `images/${folder}/${value}`;
+            };
+
+            const applyProductsToSection = (sectionId, homepageSectionName) => {
+                const section = document.getElementById(sectionId);
+                if (!section) return;
+
+                const slots = Array.from(section.querySelectorAll('.product-card'));
+                const products = (catalog.products || [])
+                    .filter((product) => product.active && product.homepage_section === homepageSectionName)
+                    .sort(byPosition);
+
+                slots.forEach((card, index) => {
+                    const product = products[index];
+                    if (!product) {
+                        card.style.display = 'none';
+                        return;
+                    }
+
+                    card.style.display = '';
+                    card.dataset.productId = product.product_id || '';
+                    card.dataset.productSlug = product.slug || '';
+                    card.dataset.shortDescription = product.short_description || '';
+                    card.dataset.fullDescription = product.full_description || '';
+                    card.dataset.collectionId = product.collection_id || '';
+                    card.dataset.characterId = product.character_id || '';
+                    card.dataset.inventoryStatus = product.inventory_status || '';
+
+                    const title = card.querySelector('.product-name');
+                    const price = card.querySelector('.product-price');
+                    if (title) title.textContent = product.title || '';
+                    if (price) price.textContent = formatPrice(product.price);
+
+                    const svg = card.querySelector('.burst-image-wrapper');
+                    if (svg) {
+                        svg.setAttribute('aria-label', product.image_alt_text || `${product.title || 'Product'} images`);
+                    }
+
+                    const shots = Array.from(card.querySelectorAll('.product-shot'));
+                    shots.forEach((shot, shotIndex) => {
+                        const rawFilename = (product.images || [])[shotIndex] || '';
+                        const imageFolder = homepageSectionName === 'Coming Soon' ? 'coming-soon' : 'new-arrivals';
+                        const filename = resolveSectionImage(rawFilename, imageFolder);
+                        if (filename) {
+                            shot.setAttribute('href', filename);
+                            shot.dataset.catalogImage = 'true';
+                            shot.style.display = '';
+                        } else {
+                            shot.setAttribute('href', '');
+                            shot.removeAttribute('data-catalog-image');
+                            shot.style.display = 'none';
+                        }
+                    });
+                });
+            };
+
+            const applyCollections = () => {
+                const section = document.getElementById('collections');
+                if (!section) return;
+
+                const slots = Array.from(section.querySelectorAll('.collection-card'));
+                const collections = (catalog.collections || [])
+                    .filter((collection) => collection.active)
+                    .sort(byPosition);
+
+                slots.forEach((card, index) => {
+                    const collection = collections[index];
+                    if (!collection) {
+                        card.style.display = 'none';
+                        return;
+                    }
+
+                    card.style.display = '';
+                    card.dataset.collectionId = collection.collection_id || '';
+                    card.dataset.collectionSlug = collection.slug || '';
+                    card.dataset.description = collection.description || '';
+
+                    const image = card.querySelector('image');
+                    const rawFilename = (collection.images || [])[0] || '';
+                    const filename = resolveSectionImage(rawFilename, 'collections');
+                    if (image && filename) image.setAttribute('href', filename);
+
+                    const svg = card.querySelector('svg');
+                    if (svg) svg.setAttribute('aria-label', `${collection.name || 'Collection'} collection`);
+
+                    // The approved V7 design uses the collection NAME as the button label.
+                    const button = card.querySelector('.collection-btn');
+                    if (button) button.textContent = collection.name || '';
+                });
+            };
+
+            const applyCharacters = () => {
+                const section = document.getElementById('characters');
+                if (!section) return;
+
+                const slots = Array.from(section.querySelectorAll('.character-card'));
+                const characters = (catalog.characters || [])
+                    .filter((character) => character.active)
+                    .sort(byPosition);
+
+                slots.forEach((card, index) => {
+                    const character = characters[index];
+                    if (!character) {
+                        card.style.display = 'none';
+                        return;
+                    }
+
+                    card.style.display = '';
+                    card.dataset.characterId = character.character_id || '';
+                    card.dataset.characterSlug = character.slug || '';
+                    card.dataset.description = character.description || '';
+
+                    const name = card.querySelector('.character-name');
+                    if (name) name.textContent = character.name || '';
+
+                    const svg = card.querySelector('svg');
+                    if (svg) svg.setAttribute('aria-label', `${character.name || 'Character'} products`);
+
+                    const shots = Array.from(card.querySelectorAll('.character-shot'));
+                    shots.forEach((shot, shotIndex) => {
+                        const rawFilename = (character.images || [])[shotIndex] || '';
+                        const filename = resolveSectionImage(rawFilename, 'characters');
+                        if (filename) {
+                            shot.setAttribute('href', filename);
+                            shot.style.display = '';
+                        } else {
+                            shot.setAttribute('href', '');
+                            shot.style.display = 'none';
+                        }
+                    });
+                });
+            };
+
+            const applySocial = () => {
+                const section = document.getElementById('social-proof');
+                if (!section) return;
+
+                const slots = Array.from(section.querySelectorAll('.social-post-link'));
+                const posts = (catalog.social || [])
+                    .filter((post) => post.active)
+                    .sort((a, b) => (Number(a.position) || 9999) - (Number(b.position) || 9999));
+
+                if (!posts.length) {
+                    section.style.display = 'none';
+                    return;
+                }
+
+                section.style.display = '';
+                slots.forEach((link, index) => {
+                    const post = posts[index];
+                    if (!post) {
+                        link.style.display = 'none';
+                        return;
+                    }
+
+                    link.style.display = '';
+                    link.href = post.post_url || '#';
+                    link.dataset.platform = post.platform || '';
+                    link.dataset.position = post.position || '';
+                    link.setAttribute('aria-label', `Open ${post.platform || 'social'} post ${post.position || index + 1}`);
+
+                    const image = link.querySelector('img');
+                    if (image) {
+                        const filename = post.image_path || resolveSectionImage(post.image || '', 'social');
+                        if (filename) image.src = filename;
+                        image.alt = post.alt_text || `Stinko's Corner ${post.platform || 'social'} post`;
+                    }
+                });
+            };
+
+            applyProductsToSection('new-arrivals', 'New Arrivals');
+            applyProductsToSection('coming-soon', 'Coming Soon');
+            applyCollections();
+            applyCharacters();
+            applySocial();
+            document.documentElement.dataset.catalogLoaded = 'true';
+        })();
+    </script>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Parallax Scroll Script
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const offset = -(scrollY * 0.8); 
+            parallaxElements.forEach(el => {
+                el.style.transform = `translateY(${offset}px)`;
+            });
+        });
+
+        // Header reveal on scroll direction.
+        // The parallax script above is intentionally left untouched.
+        const mainHeader = document.getElementById('main-header');
+        const headerNaturalTop = mainHeader.offsetTop;
+        let previousHeaderScrollY = window.scrollY;
+        let headerRevealAnchorY = window.scrollY;
+        let headerScrollFrame = null;
+
+        function clamp(value, min, max) {
+            return Math.min(max, Math.max(min, value));
+        }
+
+        function updateReturningParallax(currentY) {
+            // The existing parallax applies -0.8 * scrollY via transform.
+            // This separate CSS translate cancels only the accumulated distance,
+            // then preserves a small live parallax movement in both directions.
+            const localParallax = clamp(-(currentY - headerRevealAnchorY) * 0.18, -14, 14);
+            const compensation = (currentY * 0.8) + localParallax;
+            mainHeader.style.setProperty('--nav-parallax-compensation', `${compensation}px`);
+        }
+
+        function revealHeader(currentY) {
+            if (!mainHeader.classList.contains('nav-scroll-visible')) {
+                headerRevealAnchorY = currentY;
+            }
+            mainHeader.classList.add('nav-scroll-visible', 'nav-scroll-returning');
+            mainHeader.classList.remove('nav-scroll-hidden');
+            updateReturningParallax(currentY);
+        }
+
+        function resetHeaderReveal() {
+            mainHeader.classList.remove('nav-scroll-hidden', 'nav-scroll-visible', 'nav-scroll-returning');
+            mainHeader.style.removeProperty('--nav-parallax-compensation');
+        }
+
+        function updateHeaderReveal() {
+            const currentY = window.scrollY;
+            const delta = currentY - previousHeaderScrollY;
+
+            if (currentY <= headerNaturalTop) {
+                resetHeaderReveal();
+            } else if (delta > 1) {
+                mainHeader.classList.add('nav-scroll-hidden');
+                mainHeader.classList.remove('nav-scroll-visible');
+            } else if (delta < -1) {
+                revealHeader(currentY);
+            } else if (mainHeader.classList.contains('nav-scroll-visible')) {
+                updateReturningParallax(currentY);
+            }
+
+            previousHeaderScrollY = currentY;
+            headerScrollFrame = null;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (headerScrollFrame === null) {
+                headerScrollFrame = window.requestAnimationFrame(updateHeaderReveal);
+            }
+        }, { passive: true });
+
+        // Carousel Interaction Script
+        const slides = document.querySelectorAll('.carousel-img');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % slides.length;
+            goToSlide(nextIndex);
+        }
+
+        function startCarousel() {
+            slideInterval = setInterval(nextSlide, 8000);
+        }
+
+        function resetCarousel() {
+            clearInterval(slideInterval);
+            startCarousel();
+        }
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+                resetCarousel();
+            });
+        });
+
+        // Initialize auto-rotation
+        startCarousel();
+    </script>
+
+
+    <!-- NEW ARRIVALS INTERACTIONS -->
+    <script>
+        const productCards = Array.from(document.querySelectorAll('.product-card'));
+
+          /* Existing hover image rotation. */
+          productCards.forEach((card) => {
+            const shots = Array.from(card.querySelectorAll('.product-shot'))
+              .filter((shot) => shot.getAttribute('href'));
+            let timer = null;
+            let current = 0;
+
+            const showShot = (index) => {
+              shots.forEach((shot, shotIndex) => {
+                shot.style.opacity = shotIndex === index ? '1' : '0';
+              });
+            };
+
+            card.addEventListener('mouseenter', () => {
+              if (shots.length < 2) return;
+              if (timer) clearInterval(timer);
+              current = 1;
+              showShot(current);
+              timer = setInterval(() => {
+                current = (current + 1) % shots.length;
+                showShot(current);
+              }, 3000);
+            });
+
+            card.addEventListener('mouseleave', () => {
+              if (timer) clearInterval(timer);
+              timer = null;
+              current = 0;
+              showShot(0);
+            });
+          });
+
+          /* New Arrivals scroll-pop effect. Replays every time the cards leave and re-enter the viewport. */
+          if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.product-grid').forEach((grid) => {
+              Array.from(grid.querySelectorAll('.product-card')).forEach((card, index) => {
+                card.classList.add('scroll-reveal');
+                card.style.setProperty('--reveal-delay', `${index * 110}ms`);
+              });
+            });
+
+            const revealObserver = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                } else {
+                  entry.target.classList.remove('is-visible');
+                }
+              });
+            }, {
+              threshold: 0.16,
+              rootMargin: '0px 0px -6% 0px'
+            });
+
+            productCards.forEach((card) => revealObserver.observe(card));
+          }
+    </script>
+
+
+
+    <!-- SHOP BY CHARACTER INTERACTIONS -->
+    <script>
+      const characterGrid = document.getElementById('character-grid');
+      const characterCards = Array.from(document.querySelectorAll('.character-card'));
+
+      characterCards.forEach((card) => {
+        const shots = Array.from(card.querySelectorAll('.character-shot'));
+        let intervalId = null;
+        let currentIndex = 0;
+
+        const showShot = (index) => {
+          currentIndex = index;
+          shots.forEach((shot, shotIndex) => {
+            shot.style.opacity = shotIndex === index ? '1' : '0';
+          });
+        };
+
+        const startRotation = () => {
+          if (shots.length < 2 || shots[1].style.display === 'none') return;
+          showShot(1);
+          intervalId = window.setInterval(() => {
+            currentIndex = currentIndex === 0 ? 1 : 0;
+            showShot(currentIndex);
+          }, 700);
+        };
+
+        const stopRotation = () => {
+          if (intervalId) {
+            window.clearInterval(intervalId);
+            intervalId = null;
+          }
+          showShot(0);
+        };
+
+        card.addEventListener('mouseenter', () => {
+          stopRotation();
+          startRotation();
+        });
+
+        card.addEventListener('mouseleave', stopRotation);
+      });
+
+      if (characterGrid) {
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          const characterObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+              } else {
+                entry.target.classList.remove('is-visible');
+              }
+            });
+          }, {
+            threshold: 0.18,
+            rootMargin: '0px 0px -8% 0px'
+          });
+          characterObserver.observe(characterGrid);
+        } else {
+          characterGrid.classList.add('is-visible');
+        }
+      }
+    </script>
+
+<script>
+(() => {
+  "use strict";
+
+  // Exact Smoko cursor-trail settings, with Stinko artwork substituted.
+  const config = {
+    image: "images/cursor/middle-finger.png",
+    size: 28,
+    density: 1,
+    lifetime: 750,
+    mobile: false
+  };
+
+  if (!config.image) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const coarsePointer = window.matchMedia("(pointer: coarse)");
+
+  if (reduceMotion.matches || (!config.mobile && coarsePointer.matches)) return;
+
+  const size = Math.max(12, Math.min(48, Number(config.size) || 22));
+  const density = Math.max(1, Math.min(8, Number(config.density) || 3));
+  const lifetime = Math.max(300, Math.min(1200, Number(config.lifetime) || 700));
+  const minDistance = Math.max(8, 28 - density * 2);
+  const maxParticles = 28 + density * 4;
+
+  const layer = document.createElement("div");
+  layer.className = "stinko-cursor-trail-layer";
+  layer.setAttribute("aria-hidden", "true");
+  document.body.appendChild(layer);
+
+  let lastX = null;
+  let lastY = null;
+  let active = 0;
+  const pool = [];
+  let rafId = 0;
+  let pendingX = 0;
+  let pendingY = 0;
+  let hasPending = false;
+
+  function createParticle() {
+    const el = document.createElement("span");
+    el.className = "stinko-cursor-trail-particle";
+    el.style.width = size + "px";
+    el.style.height = size + "px";
+    el.style.backgroundImage = 'url("' + String(config.image).replace(/"/g, '\"') + '")';
+    el.style.transition =
+      "opacity " + lifetime + "ms ease-out, transform " + lifetime + "ms ease-out";
+    layer.appendChild(el);
+    return el;
+  }
+
+  function getParticle() {
+    return pool.pop() || createParticle();
+  }
+
+  function releaseParticle(el) {
+    el.style.opacity = "0";
+    el.style.transform = "translate3d(-9999px, -9999px, 0) scale(0.4)";
+    pool.push(el);
+    active = Math.max(0, active - 1);
+  }
+
+  function spawn(x, y) {
+    if (active >= maxParticles) return;
+
+    const el = getParticle();
+    const driftX = (Math.random() - 0.5) * 16;
+    const driftY = (Math.random() - 0.5) * 16 - 8;
+    const startScale = 0.85 + Math.random() * 0.35;
+    const endScale = 0.25 + Math.random() * 0.25;
+    const rotate = (Math.random() - 0.5) * 40;
+
+    active += 1;
+
+    el.style.transition = "none";
+    el.style.opacity = "0.95";
+    el.style.transform =
+      "translate3d(" + (x - size / 2) + "px, " + (y - size / 2) +
+      "px, 0) scale(" + startScale + ") rotate(" + rotate + "deg)";
+
+    // Force layout so the start state is committed before the transition.
+    el.offsetWidth;
+
+    el.style.transition =
+      "opacity " + lifetime + "ms ease-out, transform " + lifetime + "ms ease-out";
+    el.style.opacity = "0";
+    el.style.transform =
+      "translate3d(" + (x - size / 2 + driftX) + "px, " +
+      (y - size / 2 + driftY) + "px, 0) scale(" + endScale +
+      ") rotate(" + (rotate + (Math.random() - 0.5) * 30) + "deg)";
+
+    window.setTimeout(() => releaseParticle(el), lifetime + 40);
+  }
+
+  function flush() {
+    rafId = 0;
+    if (!hasPending) return;
+
+    hasPending = false;
+    const x = pendingX;
+    const y = pendingY;
+
+    if (lastX === null) {
+      lastX = x;
+      lastY = y;
+      spawn(x, y);
+      return;
+    }
+
+    const dx = x - lastX;
+    const dy = y - lastY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < minDistance) return;
+
+    const steps = Math.min(density, Math.floor(dist / minDistance));
+
+    for (let i = 1; i <= steps; i++) {
+      const t = i / steps;
+      spawn(lastX + dx * t, lastY + dy * t);
+    }
+
+    lastX = x;
+    lastY = y;
+  }
+
+  function onMove(event) {
+    pendingX = event.clientX;
+    pendingY = event.clientY;
+    hasPending = true;
+
+    if (!rafId) {
+      rafId = window.requestAnimationFrame(flush);
+    }
+  }
+
+  function onLeave() {
+    lastX = null;
+    lastY = null;
+    hasPending = false;
+  }
+
+  document.addEventListener("mousemove", onMove, { passive: true });
+  document.addEventListener("mouseleave", onLeave, { passive: true });
+
+  reduceMotion.addEventListener("change", (event) => {
+    if (!event.matches) return;
+    document.removeEventListener("mousemove", onMove);
+    document.removeEventListener("mouseleave", onLeave);
+    layer.remove();
+  });
+})();
+</script>
+
+<script src="data/pricing.js"></script>
+<script src="data/navigation.js"></script>
+</body>
+</html>
