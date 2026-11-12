@@ -56,7 +56,7 @@ if len(products) != 37 or set(PHOTO_IDS) != {p["product_id"] for p in products}:
 errors = []
 for index, product in enumerate(products, 1):
     product_id = product["product_id"]
-    target = Path(product["images"][0])
+    target = Path(product["media"][0]["path"])  # Preserves the original image path despite preview URLs
     if not str(target).startswith("images/products/") or ".." in target.parts:
         raise SystemExit("Unsafe product image path")
     if target.is_file() and target.stat().st_size > 1000:
