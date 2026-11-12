@@ -1919,7 +1919,7 @@
                     shots.forEach((shot, shotIndex) => {
                         const rawFilename = (product.images || [])[shotIndex] || '';
                         const imageFolder = homepageSectionName === 'Coming Soon' ? 'coming-soon' : 'new-arrivals';
-                        const filename = resolveSectionImage(rawFilename, imageFolder);
+                        const filename = rawFilename.startsWith('images/products/') ? rawFilename.replace(/^images\/products\//, 'images/cards/').replace(/\.(?:jpe?g|png)$/i, '.webp') : resolveSectionImage(rawFilename, imageFolder);
                         if (filename) {
                             shot.setAttribute('href', filename);
                             shot.dataset.catalogImage = 'true';
