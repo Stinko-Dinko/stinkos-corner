@@ -1,0 +1,25 @@
+name: Verify Drive photo discovery
+
+on:
+  push:
+    branches: [catalog-preview]
+    paths:
+      - '.github/workflows/check-drive-sync.yml'
+      - 'scripts/sync_drive_images.py'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install public Drive listing and image libraries
+        run: python -m pip install 'gdown==6.3.0' pillow
+      - name: Validate catalog image mapping against live Drive folders
+        run: python scripts/sync_drive_images.py --catalog data/catalog.json --scan-only
