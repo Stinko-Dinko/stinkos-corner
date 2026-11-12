@@ -7,6 +7,8 @@ on:
     paths:
       - '.github/workflows/sync-preview-images.yml'
       - 'scripts/sync_preview_images.py'
+      - 'scripts/sync_all_catalog_images.py'
+      - 'scripts/image-manifest-*.json'
 
 permissions:
   contents: write
@@ -28,7 +30,7 @@ jobs:
       - name: Install Google Drive file downloader
         run: python -m pip install gdown==5.2.0
       - name: Restore original catalog images to their expected paths
-        run: python scripts/sync_preview_images.py
+        run: python scripts/sync_all_catalog_images.py
       - name: Commit image assets only to catalog-preview
         run: |
           git config user.name "github-actions[bot]"
