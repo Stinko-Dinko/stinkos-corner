@@ -1,0 +1,41 @@
+name: Populate approved product photos for catalog preview
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [catalog-preview]
+    paths:
+      - '.github/workflows/sync-preview-images.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  copy-product-photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out catalog preview branch
+        uses: actions/checkout@v4
+        with:
+          ref: catalog-preview
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Google Drive file downloader
+        run: python -m pip install gdown==5.2.0
+      - name: Restore original catalog images to their expected paths
+        run: python scripts/sync_preview_images.py
+      - name: Commit image assets only to catalog-preview
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/products/
+          if git diff --cached --quiet; then
+            echo "Images already present."
+          else
+            git commit -m "Add original product photos to preview"
+            git push origin HEAD:catalog-preview
+          fi
