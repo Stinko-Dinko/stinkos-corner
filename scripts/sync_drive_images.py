@@ -50,12 +50,12 @@ def all_references(catalog):
     for collection in catalog.get("collections", []):
         if collection.get("active"):
             for path in collection.get("images", []):
-                if path and (p := safe_path(path)):
-                    refs.add(p if path.startswith("images/") else "images/collections/" + path)
+                if path and (p := safe_path(path if path.startswith(("images/","http://","https://")) else "images/collections/" + path)):
+                    refs.add(p)
     for character in catalog.get("characters", []):
         if character.get("active"):
             for path in character.get("images", []):
-                if path and (p := safe_path(path)):
+                if path and (p := safe_path(path if path.startswith(("images/","http://","https://")) else "images/characters/" + path)):
                     refs.add(p)
     for item in catalog.get("social", []):
         if item.get("active") and item.get("image_path"):
@@ -119,7 +119,12 @@ def optimize(src, target, card):
     image.thumbnail((1600,1600), Image.Resampling.LANCZOS)
     target.parent.mkdir(parents=True, exist_ok=True)
     # Preserve the approved optimized gallery specification.
-    image.save(target, "JPEG", quality=79, optimize=True, progressive=True, subsampling=0)
+    if target.suffix.lower() in (".jpg",".jpeg"):
+        image.save(target, "JPEG", quality=79, optimize=True, progressive=True, subsampling=0)
+    elif target.suffix.lower() == ".png":
+        image.save(target, "PNG", optimize=True)
+    else:
+        image.save(target, "WEBP", quality=79, method=5)
     if card is None:
         return
     w,h = 900,788
