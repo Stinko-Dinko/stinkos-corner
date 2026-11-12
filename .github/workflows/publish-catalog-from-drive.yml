@@ -28,13 +28,12 @@ jobs:
           python-version: '3.12'
       - name: Install Drive and photography tools
         run: python -m pip install 'gdown==6.3.0' 'pillow==13.0.0'
-      - name: Download master spreadsheet and original builder from Drive
+      - name: Download master spreadsheet from Drive
         run: |
           mkdir -p /tmp/stinkos-import /tmp/stinkos-output
           gdown --quiet 'https://drive.google.com/uc?id=1A1LGdQ_Gh9Y6aLt08E-3TEQxmhyba_pU' -O /tmp/stinkos-import/Stinkos_Product_Catalog.xlsx
-          gdown --quiet 'https://drive.google.com/uc?id=13f36tn1y9pnSImJM-YXYRI0Us7GWpSua' -O /tmp/stinkos-import/build_catalog.py
       - name: Generate catalog from the master workbook
-        run: python /tmp/stinkos-import/build_catalog.py /tmp/stinkos-import/Stinkos_Product_Catalog.xlsx /tmp/stinkos-output
+        run: python scripts/build_catalog.py /tmp/stinkos-import/Stinkos_Product_Catalog.xlsx /tmp/stinkos-output
       - name: Reject a blank or unfinished catalog before any publishing
         run: |
           python - <<'PY'
