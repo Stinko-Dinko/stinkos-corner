@@ -6,6 +6,7 @@ on:
     branches: [catalog-preview]
     paths:
       - '.github/workflows/sync-preview-images.yml'
+      - 'scripts/sync_preview_images.py'
 
 permissions:
   contents: write
