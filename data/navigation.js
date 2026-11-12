@@ -190,4 +190,9 @@
   document.querySelector('.marquee-green')?.after(marker);
   document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a||e.defaultPrevented||a.target==='_blank'||e.ctrlKey||e.metaKey)return;const href=a.getAttribute('href');if(!href||href.startsWith('#')||/^(https?:|mailto:|tel:|javascript:)/i.test(href))return;let u;try{u=new URL(href,location.href)}catch{return}if(u.origin!==location.origin||!u.pathname.endsWith('.html'))return;e.preventDefault();location.assign(reviewUrl(href))},true);
  }
+  // Single-photo cards must keep their primary image visible on hover.
+  // Two-photo cards retain their existing approved primary/secondary crossfade.
+  const singlePhotoStyle=document.createElement('style');
+  singlePhotoStyle.textContent='.shop-card:not(:has(.shop-burst-img.secondary)):hover .shop-burst-img.primary,.shop-card:not(:has(.shop-burst-img.secondary)):focus-within .shop-burst-img.primary{opacity:1}';
+  document.head.appendChild(singlePhotoStyle);
 })();
