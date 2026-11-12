@@ -23,7 +23,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1V1Z56hLXzvfUNF2Ig-BAGws1WibG5Iox&sz=w1200",
+        "images/products/eggplant-decal/eggplant-decal-white-matte-medium-01.jpg",
         "images/products/eggplant-decal/eggplant-decal-white-matte-medium-02.jpg",
         "images/products/eggplant-decal/eggplant-decal-silver-holographic-small-01.jpg",
         "images/products/eggplant-decal/eggplant-decal-purple-green-stem-multicolor-small-01.jpg"
@@ -32,7 +32,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1V1Z56hLXzvfUNF2Ig-BAGws1WibG5Iox&sz=w1200",
+          "path": "images/products/eggplant-decal/eggplant-decal-white-matte-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "Matte",
@@ -282,7 +282,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1w5BPoYYatbQagT0zaNN7JJ8D1IfCaxMb&sz=w1200",
+        "images/products/fuck-you-knewave-decal/fuck-you-knewave-decal-white-medium-01.jpg",
         "images/products/fuck-you-knewave-decal/fuck-you-knewave-decal-white-medium-02.jpg",
         "images/products/fuck-you-knewave-decal/fuck-you-knewave-decal-white-small-01.jpg",
         "images/products/fuck-you-knewave-decal/fuck-you-knewave-decal-white-small-02.jpg",
@@ -292,7 +292,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1w5BPoYYatbQagT0zaNN7JJ8D1IfCaxMb&sz=w1200",
+          "path": "images/products/fuck-you-knewave-decal/fuck-you-knewave-decal-white-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -551,7 +551,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1AFa8talVrhKnGXwlQUhmTok15Hi8GDel&sz=w1200",
+        "images/products/censored-eat-shit-long-decal/censored-eat-shit-long-decal-white-medium-01.jpg",
         "images/products/censored-eat-shit-long-decal/censored-eat-shit-long-decal-white-medium-02.jpg",
         "images/products/censored-eat-shit-long-decal/censored-eat-shit-long-decal-white-medium-03.jpg",
         "images/products/censored-eat-shit-long-decal/censored-eat-shit-long-decal-white-glossy-medium-01.jpg"
@@ -560,7 +560,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1AFa8talVrhKnGXwlQUhmTok15Hi8GDel&sz=w1200",
+          "path": "images/products/censored-eat-shit-long-decal/censored-eat-shit-long-decal-white-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -810,7 +810,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1zbjA6YKKF_JlpI8bRy2DaxnFcQPRoPvg&sz=w1200",
+        "images/products/love-tucson-decal/love-tucson-decal-pink-large-01.jpg",
         "images/products/love-tucson-decal/love-tucson-decal-black-large-01.jpg",
         "images/products/love-tucson-decal/love-tucson-decal-purple-large-01.jpg",
         "images/products/love-tucson-decal/love-tucson-decal-purple-large-02.jpg"
@@ -819,7 +819,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1zbjA6YKKF_JlpI8bRy2DaxnFcQPRoPvg&sz=w1200",
+          "path": "images/products/love-tucson-decal/love-tucson-decal-pink-large-01.jpg",
           "role": "Product photo",
           "color": "Pink",
           "finish": "",
@@ -1069,7 +1069,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1lPRF9YPCbyKoWS18l3rDDPdbORqai6E8&sz=w1200",
+        "images/products/cunt-decal/cunt-decal-white-medium-01.jpg",
         "images/products/cunt-decal/cunt-decal-white-medium-02.jpg",
         "images/products/cunt-decal/cunt-decal-pink-medium-01.jpg"
       ],
@@ -1077,7 +1077,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1lPRF9YPCbyKoWS18l3rDDPdbORqai6E8&sz=w1200",
+          "path": "images/products/cunt-decal/cunt-decal-white-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -1318,13 +1318,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1u61EFQQe6hBjFCpjFpE1o4oCp8FHW1yS&sz=w1200"
+        "images/products/cat-heart-poop-decal/cat-heart-poop-decal-white-medium-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1u61EFQQe6hBjFCpjFpE1o4oCp8FHW1yS&sz=w1200",
+          "path": "images/products/cat-heart-poop-decal/cat-heart-poop-decal-white-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -1547,14 +1547,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1AfwH5_OzbWnJr86X3DknjxsxRQRha5pj&sz=w1200",
+        "images/products/dog-heart-poop-decal/dog-heart-poop-decal-white-medium-01.jpg",
         "images/products/dog-heart-poop-decal/dog-heart-poop-decal-white-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1AfwH5_OzbWnJr86X3DknjxsxRQRha5pj&sz=w1200",
+          "path": "images/products/dog-heart-poop-decal/dog-heart-poop-decal-white-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -1786,13 +1786,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1HbB8io6kyzY5q5Gx15kP1RbXa5DEY6uZ&sz=w1200"
+        "images/products/bird-poop-trail-decal/bird-poop-trail-decal-white-large-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1HbB8io6kyzY5q5Gx15kP1RbXa5DEY6uZ&sz=w1200",
+          "path": "images/products/bird-poop-trail-decal/bird-poop-trail-decal-white-large-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -2015,13 +2015,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=12C76tmnA2QF_L15BMDdlEBHQfJZ2zYhN&sz=w1200"
+        "images/products/cat-poop-trail-decal/cat-poop-trail-decal-white-large-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=12C76tmnA2QF_L15BMDdlEBHQfJZ2zYhN&sz=w1200",
+          "path": "images/products/cat-poop-trail-decal/cat-poop-trail-decal-white-large-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -2244,14 +2244,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1dr8qiFvLUHwrQHjwQZAOEjFXHfdXSOep&sz=w1200",
+        "images/products/my-cat-thinks-you-suck-decal/my-cat-thinks-you-suck-decal-white-medium-01.jpg",
         "images/products/my-cat-thinks-you-suck-decal/my-cat-thinks-you-suck-decal-black-large-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1dr8qiFvLUHwrQHjwQZAOEjFXHfdXSOep&sz=w1200",
+          "path": "images/products/my-cat-thinks-you-suck-decal/my-cat-thinks-you-suck-decal-white-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -2483,7 +2483,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1F88acGQe_-uyUxguPQI9g-JyU79SVrR5&sz=w1200",
+        "images/products/eat-shit-stacked-decal/eat-shit-stacked-decal-purple-medium-01.jpg",
         "images/products/eat-shit-stacked-decal/eat-shit-stacked-decal-purple-medium-02.jpg",
         "images/products/eat-shit-stacked-decal/eat-shit-stacked-decal-white-medium-01.jpg",
         "images/products/eat-shit-stacked-decal/eat-shit-stacked-decal-white-small-01.jpg"
@@ -2492,7 +2492,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1F88acGQe_-uyUxguPQI9g-JyU79SVrR5&sz=w1200",
+          "path": "images/products/eat-shit-stacked-decal/eat-shit-stacked-decal-purple-medium-01.jpg",
           "role": "Product photo",
           "color": "Purple",
           "finish": "",
@@ -2742,7 +2742,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1Bz9uKNJO1p0NrYJeHevzF71EhccBqfEr&sz=w1200",
+        "images/products/emoji-eat-shit-decal/emoji-eat-shit-decal-silver-holographic-large-01.jpg",
         "images/products/emoji-eat-shit-decal/emoji-eat-shit-decal-silver-holographic-large-02.jpg"
       ],
       "videos": [
@@ -2752,7 +2752,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1Bz9uKNJO1p0NrYJeHevzF71EhccBqfEr&sz=w1200",
+          "path": "images/products/emoji-eat-shit-decal/emoji-eat-shit-decal-silver-holographic-large-01.jpg",
           "role": "Product photo",
           "color": "Silver",
           "finish": "Holographic",
@@ -2994,13 +2994,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1IT8QRXAt0eLoBaW8hxpKpqzgS4tSIxvd&sz=w1200"
+        "images/products/bitch-script-decal/bitch-script-decal-purple-large-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1IT8QRXAt0eLoBaW8hxpKpqzgS4tSIxvd&sz=w1200",
+          "path": "images/products/bitch-script-decal/bitch-script-decal-purple-large-01.jpg",
           "role": "Product photo",
           "color": "Purple",
           "finish": "",
@@ -3223,14 +3223,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=116B1-EVJJ1PPAmmVyoKZ1kRX5MsWe0dh&sz=w1200",
+        "images/products/emoji-peach-decal/emoji-peach-decal-white-large-01.jpg",
         "images/products/emoji-peach-decal/emoji-peach-decal-white-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=116B1-EVJJ1PPAmmVyoKZ1kRX5MsWe0dh&sz=w1200",
+          "path": "images/products/emoji-peach-decal/emoji-peach-decal-white-large-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -3462,7 +3462,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=15pgENkeqcXeumCH_KV-6bTXGbX72jUuh&sz=w1200",
+        "images/products/fuck-off-decal/fuck-off-decal-white-medium-01.jpg",
         "images/products/fuck-off-decal/fuck-off-decal-white-small-01.jpg",
         "images/products/fuck-off-decal/fuck-off-decal-red-large-01.jpg"
       ],
@@ -3470,7 +3470,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=15pgENkeqcXeumCH_KV-6bTXGbX72jUuh&sz=w1200",
+          "path": "images/products/fuck-off-decal/fuck-off-decal-white-medium-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -3711,14 +3711,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1TEceBSXOdIesbbR19ThL_RZjB3yh0lv-&sz=w1200",
+        "images/products/poopin-guy-decal/poopin-guy-decal-black-medium-01.jpg",
         "images/products/poopin-guy-decal/poopin-guy-decal-black-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1TEceBSXOdIesbbR19ThL_RZjB3yh0lv-&sz=w1200",
+          "path": "images/products/poopin-guy-decal/poopin-guy-decal-black-medium-01.jpg",
           "role": "Product photo",
           "color": "Black",
           "finish": "",
@@ -3950,13 +3950,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=19sYUHfasT3NhOtjEAjQBbXlM4kKebj4z&sz=w1200"
+        "images/products/asshole-cat-decal/asshole-cat-decal-glow-in-the-dark-glow-in-the-dark-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=19sYUHfasT3NhOtjEAjQBbXlM4kKebj4z&sz=w1200",
+          "path": "images/products/asshole-cat-decal/asshole-cat-decal-glow-in-the-dark-glow-in-the-dark-small-01.jpg",
           "role": "Product photo",
           "color": "Glow in the Dark",
           "finish": "Glow in the Dark",
@@ -4179,7 +4179,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1frjt8i_6yuwFrqvYtfB68JoCmPqOYzAZ&sz=w1200",
+        "images/products/my-dog-thinks-you-suck-decal/my-dog-thinks-you-suck-decal-white-small-01.jpg",
         "images/products/my-dog-thinks-you-suck-decal/my-dog-thinks-you-suck-decal-white-small-02.jpg",
         "images/products/my-dog-thinks-you-suck-decal/my-dog-thinks-you-suck-decal-white-small-03.jpg"
       ],
@@ -4187,7 +4187,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1frjt8i_6yuwFrqvYtfB68JoCmPqOYzAZ&sz=w1200",
+          "path": "images/products/my-dog-thinks-you-suck-decal/my-dog-thinks-you-suck-decal-white-small-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -4428,13 +4428,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1jNw6-Xrc_rSceUzPSj-G1irgtuxDaWsE&sz=w1200"
+        "images/products/my-bird-thinks-you-suck-decal/my-bird-thinks-you-suck-decal-white-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1jNw6-Xrc_rSceUzPSj-G1irgtuxDaWsE&sz=w1200",
+          "path": "images/products/my-bird-thinks-you-suck-decal/my-bird-thinks-you-suck-decal-white-small-01.jpg",
           "role": "Product photo",
           "color": "White",
           "finish": "",
@@ -4657,13 +4657,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=16L1ZiEi6dCateXdgkT96zzlDWma4Khnl&sz=w1200"
+        "images/products/fuck-off-street-sign-decal/fuck-off-street-sign-decal-black-large-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=16L1ZiEi6dCateXdgkT96zzlDWma4Khnl&sz=w1200",
+          "path": "images/products/fuck-off-street-sign-decal/fuck-off-street-sign-decal-black-large-01.jpg",
           "role": "Product photo",
           "color": "Black",
           "finish": "",
@@ -4886,7 +4886,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=16EJ-fE2Xuh1k9c16xj9E01FqiXc3Ipu5&sz=w1200",
+        "images/products/magical-as-fuck-sticker-sheet/magical-as-fuck-sticker-sheet-holographic-stars-01.jpg",
         "images/products/magical-as-fuck-sticker-sheet/magical-as-fuck-sticker-sheet-holographic-stars-02.jpg"
       ],
       "videos": [
@@ -4895,7 +4895,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=16EJ-fE2Xuh1k9c16xj9E01FqiXc3Ipu5&sz=w1200",
+          "path": "images/products/magical-as-fuck-sticker-sheet/magical-as-fuck-sticker-sheet-holographic-stars-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Holographic Stars",
@@ -4992,14 +4992,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1N1TT26AoOe8AtTyC_1aZOKXRDjgL8J7R&sz=w1200",
+        "images/products/hotdog-slut-sticker/hotdog-slut-sticker-glossy-small-01.jpg",
         "images/products/hotdog-slut-sticker/hotdog-slut-sticker-glossy-small-02.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1N1TT26AoOe8AtTyC_1aZOKXRDjgL8J7R&sz=w1200",
+          "path": "images/products/hotdog-slut-sticker/hotdog-slut-sticker-glossy-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Glossy",
@@ -5107,13 +5107,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1V10CZs6-DFn4g-CnXc6OXQ8xOZW6tgtG&sz=w1200"
+        "images/products/creampie-whore-sticker/creampie-whore-sticker-glossy-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1V10CZs6-DFn4g-CnXc6OXQ8xOZW6tgtG&sz=w1200",
+          "path": "images/products/creampie-whore-sticker/creampie-whore-sticker-glossy-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Glossy",
@@ -5212,13 +5212,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1bZWXkDJGsZ_ROb1xOfgSA4IzcZpfQQWV&sz=w1200"
+        "images/products/fuck-you-so-much-heart-sticker/fuck-you-so-much-heart-sticker-glossy-medium-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1bZWXkDJGsZ_ROb1xOfgSA4IzcZpfQQWV&sz=w1200",
+          "path": "images/products/fuck-you-so-much-heart-sticker/fuck-you-so-much-heart-sticker-glossy-medium-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Glossy",
@@ -5317,13 +5317,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1nra890mIyh-MVCFmyDuu7RStAm-k-E4p&sz=w1200"
+        "images/products/go-fuck-yourself-retro-sticker/go-fuck-yourself-retro-sticker-matte-medium-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1nra890mIyh-MVCFmyDuu7RStAm-k-E4p&sz=w1200",
+          "path": "images/products/go-fuck-yourself-retro-sticker/go-fuck-yourself-retro-sticker-matte-medium-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Matte",
@@ -5422,13 +5422,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1tOyWMj2dAvH9zbE_fM795iO5zLjVjypz&sz=w1200"
+        "images/products/cunt-multicolor-lettering-sticker/cunt-multicolor-lettering-sticker-matte-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1tOyWMj2dAvH9zbE_fM795iO5zLjVjypz&sz=w1200",
+          "path": "images/products/cunt-multicolor-lettering-sticker/cunt-multicolor-lettering-sticker-matte-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Matte",
@@ -5527,7 +5527,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1eHk6yVtIRtQM0lL91UmhShPZzY8ckfS7&sz=w1200"
+        "images/products/magical-as-fuck-unicorn-sticker/magical-as-fuck-unicorn-sticker-holographic-medium-01.jpg"
       ],
       "videos": [
         "images/products/magical-as-fuck-unicorn-sticker/magical-as-fuck-unicorn-sticker-video-01.mp4"
@@ -5535,7 +5535,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1eHk6yVtIRtQM0lL91UmhShPZzY8ckfS7&sz=w1200",
+          "path": "images/products/magical-as-fuck-unicorn-sticker/magical-as-fuck-unicorn-sticker-holographic-medium-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Holographic",
@@ -5639,13 +5639,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=12vyBw7c7DrQs2o4cU-T8NdLUE838uy_E&sz=w1200"
+        "images/products/zombie-attack-sticker-sheet/zombie-attack-sticker-sheet-matte-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=12vyBw7c7DrQs2o4cU-T8NdLUE838uy_E&sz=w1200",
+          "path": "images/products/zombie-attack-sticker-sheet/zombie-attack-sticker-sheet-matte-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Matte",
@@ -5728,14 +5728,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1eCg-fIdGaaTdDA2HkERGPGMyQfLOEOUM&sz=w1200",
+        "images/products/sex-drugs-rock-n-roll-sticker-sheet/sex-drugs-rock-n-roll-sticker-sheet-matte-01.jpg",
         "images/products/sex-drugs-rock-n-roll-sticker-sheet/sex-drugs-rock-n-roll-sticker-sheet-matte-02.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1eCg-fIdGaaTdDA2HkERGPGMyQfLOEOUM&sz=w1200",
+          "path": "images/products/sex-drugs-rock-n-roll-sticker-sheet/sex-drugs-rock-n-roll-sticker-sheet-matte-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "Matte",
@@ -5827,13 +5827,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1OG7iLWOFCQABDqtBSUdkATTVl0SfQ7jU&sz=w1200"
+        "images/products/emoji-tongue-magnet/emoji-tongue-magnet-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1OG7iLWOFCQABDqtBSUdkATTVl0SfQ7jU&sz=w1200",
+          "path": "images/products/emoji-tongue-magnet/emoji-tongue-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
@@ -5903,13 +5903,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=10xPFIH2-PfLKN2et8Wnrgv5i3ntj4uNL&sz=w1200"
+        "images/products/fuck-off-rainbow-magnet/fuck-off-rainbow-magnet-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=10xPFIH2-PfLKN2et8Wnrgv5i3ntj4uNL&sz=w1200",
+          "path": "images/products/fuck-off-rainbow-magnet/fuck-off-rainbow-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
@@ -5979,13 +5979,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=15pARuN6IaxEBVdwSQZmP3N_0crBZ9hLA&sz=w1200"
+        "images/products/poop-emoji-magnet/poop-emoji-magnet-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=15pARuN6IaxEBVdwSQZmP3N_0crBZ9hLA&sz=w1200",
+          "path": "images/products/poop-emoji-magnet/poop-emoji-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
@@ -6055,13 +6055,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1O85L512s5e2tkBOQcqvZfduaY30MUPgr&sz=w1200"
+        "images/products/eat-emoji-magnet/eat-emoji-magnet-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1O85L512s5e2tkBOQcqvZfduaY30MUPgr&sz=w1200",
+          "path": "images/products/eat-emoji-magnet/eat-emoji-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
@@ -6131,14 +6131,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1tawdhsG0ltXPXbfHkTnGvBRmnZQlbtbR&sz=w1200",
+        "images/products/go-fuck-yourself-retro-magnet/go-fuck-yourself-retro-magnet-small-01.jpg",
         "images/products/go-fuck-yourself-retro-magnet/go-fuck-yourself-retro-magnet-small-02.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1tawdhsG0ltXPXbfHkTnGvBRmnZQlbtbR&sz=w1200",
+          "path": "images/products/go-fuck-yourself-retro-magnet/go-fuck-yourself-retro-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
@@ -6217,14 +6217,14 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1ilqRGiAFHqK_JZNaaSXvKj_BkkGUrfFJ&sz=w1200",
+        "images/products/eggplant-emoji-magnet/eggplant-emoji-magnet-small-01.jpg",
         "images/products/eggplant-emoji-magnet/eggplant-emoji-magnet-small-02.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1ilqRGiAFHqK_JZNaaSXvKj_BkkGUrfFJ&sz=w1200",
+          "path": "images/products/eggplant-emoji-magnet/eggplant-emoji-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
@@ -6303,7 +6303,7 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1Mz2pqi5swWfQqUhJe9OfGYttQXDpn-5j&sz=w1200",
+        "images/products/fuck-you-so-much-heart-magnet/fuck-you-so-much-heart-magnet-small-01.jpg",
         "images/products/fuck-you-so-much-heart-magnet/fuck-you-so-much-heart-magnet-small-02.jpg",
         "images/products/fuck-you-so-much-heart-magnet/fuck-you-so-much-heart-magnet-small-03.jpg"
       ],
@@ -6311,7 +6311,7 @@ window.STINKOS_CATALOG = {
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1Mz2pqi5swWfQqUhJe9OfGYttQXDpn-5j&sz=w1200",
+          "path": "images/products/fuck-you-so-much-heart-magnet/fuck-you-so-much-heart-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
@@ -6399,13 +6399,13 @@ window.STINKOS_CATALOG = {
         "photo-backed"
       ],
       "images": [
-        "https://drive.google.com/thumbnail?id=1pdnW_x7btliK_nfTkjbEQQTwPT_Mf0SH&sz=w1200"
+        "images/products/emoji-peach-magnet/emoji-peach-magnet-small-01.jpg"
       ],
       "videos": [],
       "media": [
         {
           "type": "image",
-          "path": "https://drive.google.com/thumbnail?id=1pdnW_x7btliK_nfTkjbEQQTwPT_Mf0SH&sz=w1200",
+          "path": "images/products/emoji-peach-magnet/emoji-peach-magnet-small-01.jpg",
           "role": "Product photo",
           "color": "",
           "finish": "",
