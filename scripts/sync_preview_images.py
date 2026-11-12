@@ -48,7 +48,8 @@ PHOTO_IDS = {
   "emoji-peach-magnet":"1pdnW_x7btliK_nfTkjbEQQTwPT_Mf0SH"
 }
 
-raw = Path("data/catalog.js").read_text(encoding="utf-8")
+from urllib.request import urlopen
+raw = urlopen("https://raw.githubusercontent.com/Stinko-Dinko/stinkos-corner/main/data/catalog.js", timeout=30).read().decode("utf-8")
 catalog = json.loads(raw[raw.index("{"):raw.rindex("}")+1])
 products = catalog["products"]
 if len(products) != 37 or set(PHOTO_IDS) != {p["product_id"] for p in products}:
