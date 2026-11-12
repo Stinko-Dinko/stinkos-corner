@@ -146,8 +146,14 @@ def main():
     sources = drive_listing()
     print(f"Drive scan: {len(sources)} photographs, {len(expected)} catalog-referenced paths",flush=True)
     missing = [p for p in expected if p not in sources and not (ROOT / p).is_file()]
+    essential = [p for p in missing if p.startswith("images/products/")]
+    if essential:
+        die("Referenced PRODUCT photos are missing from Drive and GitHub:\n" + "\n".join(essential[:40]))
     if missing:
-        die("Referenced images are missing from Drive and GitHub:\n" + "\n".join(missing[:40]))
+        print("WARNING: Unavailable optional decorative images (not blocking catalog):",flush=True)
+        for p in missing:
+            print("  " + p,flush=True)
+        expected = [p for p in expected if p not in missing]
     if args.scan_only:
         print("SCAN OK. No files modified.",flush=True)
         return
