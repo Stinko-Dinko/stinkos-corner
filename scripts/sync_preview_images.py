@@ -69,7 +69,7 @@ for index, product in enumerate(products, 1):
             raise RuntimeError("Google Drive returned no image")
         with target.open("rb") as file:
             magic=file.read(12)
-        if not (magic.startswith(b"\\xff\\xd8\\xff") or magic.startswith(b"\\x89PNG") or magic.startswith(b"RIFF")):
+        if not (magic.startswith(bytes.fromhex("ffd8ff")) or magic.startswith(bytes.fromhex("89504e47")) or magic.startswith(b"RIFF")):
             raise RuntimeError("Downloaded file does not look like an image")
         print(f"{index}/37 downloaded: {target} ({target.stat().st_size} bytes)", flush=True)
     except Exception as exc:
