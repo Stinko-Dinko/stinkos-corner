@@ -1,0 +1,62 @@
+name: Publish catalog from Drive
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  catalog:
+    name: Validate and publish spreadsheet catalog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out approved preview
+        uses: actions/checkout@v4
+        with:
+          ref: catalog-preview
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download current master spreadsheet and its existing builder
+        run: |
+          python -m pip install gdown==5.2.0
+          mkdir -p /tmp/stinkos-import /tmp/stinkos-output
+          python -m gdown --id 1A1LGdQ_Gh9Y6aLt08E-3TEQxmhyba_pU -O /tmp/stinkos-import/Stinkos_Product_Catalog.xlsx
+          python -m gdown --id 13f36tn1y9pnSImJM-YXYRI0Us7GWpSua -O /tmp/stinkos-import/build_catalog.py
+      - name: Generate catalog using the original admin script
+        run: python /tmp/stinkos-import/build_catalog.py /tmp/stinkos-import/Stinkos_Product_Catalog.xlsx /tmp/stinkos-output
+      - name: Safety checks before touching the website
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          root = pathlib.Path(".")
+          data = json.loads(pathlib.Path("/tmp/stinkos-output/catalog.json").read_text(encoding="utf-8"))
+          products = data.get("products", [])
+          live = [p for p in products if p.get("active") and p.get("status") == "Live"]
+          if not products or not live:
+              raise SystemExit("PUBLISH BLOCKED: Master workbook has no active Live products. The current hosted catalog was preserved. Set status=Live and active=Yes on the Products tab before publishing.")
+          missing = sorted({path for p in live for path in p.get("images", []) if path and not (root / path).is_file()})
+          if missing:
+              print("Product images missing from GitHub. Catalog not published:")
+              for path in missing:
+                  print("  " + path)
+              raise SystemExit(f"PUBLISH BLOCKED: {len(missing)} referenced images are missing. Add those images before publishing.")
+          print(f"Validated {len(products)} products and {len(live)} active Live products; all their images exist.")
+          PY
+      - name: Publish only catalog data files
+        run: |
+          cp /tmp/stinkos-output/catalog.js data/catalog.js
+          cp /tmp/stinkos-output/catalog.json data/catalog.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/catalog.js data/catalog.json
+          if git diff --cached --quiet; then
+            echo "Catalog is already current. No changes needed."
+          else
+            git commit -m "Publish catalog from master Drive spreadsheet"
+            git push origin HEAD:catalog-preview
+          fi
