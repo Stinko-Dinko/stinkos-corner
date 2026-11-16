@@ -1365,7 +1365,7 @@
 <a class="cart-btn knewave-font" href="#">CART (0)</a>
 </div>
 </header><main class="shop-shell" id="shop-listing"><div class="shop-breadcrumb"><a href="index.html">HOME</a> &gt; CHARACTER</div><h1 class="shop-heading">Character</h1>
-<div class="shop-toolbar"><div class="shop-filters" id="shop-filter-groups"><div class="shop-filter-wrap"><button class="shop-filter-toggle" type="button" aria-expanded="false" aria-controls="shop-filter-1">REFINE BY: PRODUCT <span aria-hidden="true">⌄</span></button><div class="shop-filter-menu" id="shop-filter-1" hidden></div></div><div class="shop-filter-wrap"><button class="shop-filter-toggle" type="button" aria-expanded="false" aria-controls="shop-filter-2">REFINE BY: DETAILS <span aria-hidden="true">⌄</span></button><div class="shop-filter-menu" id="shop-filter-2" hidden></div></div></div><label class="shop-sort">SORT BY <select id="shop-sort"></select></label></div>
+<div class="shop-toolbar"><div class="shop-filters" id="shop-filter-groups"><div class="shop-filter-wrap"><button class="shop-filter-toggle" type="button" aria-expanded="false" aria-controls="shop-filter-1">REFINE BY: PRODUCT TYPE <span aria-hidden="true">⌄</span></button><div class="shop-filter-menu" id="shop-filter-1" hidden></div></div><div class="shop-filter-wrap"><button class="shop-filter-toggle" type="button" aria-expanded="false" aria-controls="shop-filter-2">REFINE BY: COLLECTIONS &amp; MORE <span aria-hidden="true">⌄</span></button><div class="shop-filter-menu" id="shop-filter-2" hidden></div></div></div><label class="shop-sort">SORT BY <select id="shop-sort"></select></label></div>
 <div class="shop-meta"><span id="shop-count" aria-live="polite">Loading products...</span><button type="button" class="shop-reset" id="shop-reset" hidden>CLEAR FILTERS</button></div>
 <p class="shop-placeholder-note">Catalog preview: some entries and photos are placeholders. Add to Cart saves to a local preview cart; checkout is not connected.</p>
 <div class="shop-grid" id="shop-grid"></div><p class="shop-no-results" id="shop-empty" hidden>No products match those filters.</p><div class="shop-load-container"><button type="button" class="shop-load" id="shop-more" hidden>Show More</button></div></main><footer class="stinko-footer">
@@ -1710,7 +1710,7 @@
  if(vinylRows.length) detailFilters.push({key:'color',label:'Color',field:'__color',options:uniqueOptions(vinylRows,'color','color')});
  const finishRows=uniqueOptions([...vinylRows.map(v=>({value:v.finish,label:v.finish})),...stickerRows.map(v=>({value:v.name,label:v.name}))],'value','label');
  if(finishRows.length) detailFilters.push({key:'finish',label:'Finish',field:'__finish',options:finishRows});
- const filters=[...baseFilters,...detailFilters.filter(f=>!baseFilters.some(b=>b.key===f.key))];
+ const filters=baseFilters.filter(f=>['product_type','collection','character','category'].includes(f.key));
  const selected={}; let visible=20;let revealObserver;
  const pricing=window.STINKO_PRICING;
  // The Shop Sort tab owns labels, order, and enabled choices.
@@ -1735,9 +1735,9 @@
   return wrapValue(f.field==='collection_id'?(p.collection_ids||[p.collection_id]):f.field==='category_id'?(p.category_ids||[p.category_id]):f.field==='character_id'?(p.character_ids||[p.character_id]):p[f.field]);
  }
  function makeFilter(f){let values=f.options;if(!values.length)return '';return '<section><h3>'+clean(f.label)+'</h3>'+values.map(o=>'<label class="shop-filter-option"><input type="checkbox" data-key="'+clean(f.key)+'" value="'+clean(o.value)+'">'+clean(o.label)+'</label>').join('')+'</section>'}
- const left=filters.filter(f=>['category','product_type','collection','character'].includes(f.key)); const right=filters.filter(f=>!left.includes(f));
+ const left=filters.filter(f=>f.key==='product_type'); const right=filters.filter(f=>f.key!=='product_type');
  $('shop-filter-1').innerHTML=left.map(makeFilter).join('')||'<p class="shop-filter-empty">No filters yet</p>';
- $('shop-filter-2').innerHTML=right.map(makeFilter).join('')||'<p class="shop-filter-empty">Add colors or special editions in the spreadsheet</p>';
+ $('shop-filter-2').innerHTML=right.map(makeFilter).join('')||'<p class="shop-filter-empty">No collections or characters configured</p>';
  document.querySelectorAll('.shop-filter-toggle').forEach(btn=>btn.addEventListener('click',()=>{let menu=$(btn.getAttribute('aria-controls'));let opening=menu.hidden;document.querySelectorAll('.shop-filter-menu').forEach(el=>el.hidden=true);document.querySelectorAll('.shop-filter-toggle').forEach(el=>el.setAttribute('aria-expanded','false'));menu.hidden=!opening;btn.setAttribute('aria-expanded',String(opening));}));
  document.addEventListener('click',e=>{if(!e.target.closest('.shop-filter-wrap')){document.querySelectorAll('.shop-filter-menu').forEach(el=>el.hidden=true);document.querySelectorAll('.shop-filter-toggle').forEach(el=>el.setAttribute('aria-expanded','false'));}});
  document.querySelectorAll('.shop-filter-menu input').forEach(input=>input.addEventListener('change',()=>{selected[input.dataset.key]||=new Set();input.checked?selected[input.dataset.key].add(input.value):selected[input.dataset.key].delete(input.value);visible=20;render()}));
