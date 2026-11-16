@@ -552,8 +552,9 @@
           }
 
           .product-card:hover .product-hover-action,
-          .product-card:focus-visible .product-hover-action {
+          .product-card:focus-within .product-hover-action {
             opacity: 1;
+            pointer-events: auto;
             transform: translate(-50%, 0) scale(1);
           }
 
@@ -1912,7 +1913,6 @@
                             action.setAttribute('role', 'button');
                             action.setAttribute('tabindex', '0');
                             action.setAttribute('aria-label', 'Add ' + (product.title || 'product') + ' to cart');
-                            action.style.pointerEvents = 'auto';
                             const quickAdd = (event) => {
                                 event.preventDefault();
                                 event.stopPropagation();
