@@ -34,17 +34,19 @@ jobs:
           gdown --quiet 'https://drive.google.com/uc?id=1A1LGdQ_Gh9Y6aLt08E-3TEQxmhyba_pU' -O /tmp/stinkos-import/Stinkos_Product_Catalog.xlsx
       - name: Generate catalog from the master workbook
         run: python scripts/build_catalog.py /tmp/stinkos-import/Stinkos_Product_Catalog.xlsx /tmp/stinkos-output
-      - name: Reject a blank or unfinished catalog before any publishing
+      - name: Reject a blank catalog before updating preview
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           data=json.loads(Path('/tmp/stinkos-output/catalog.json').read_text(encoding='utf8'))
           products=data.get('products', [])
+          if not products:
+              raise SystemExit('PREVIEW BLOCKED: The catalog contains no products. Existing preview remains unchanged.')
           live=[p for p in products if p.get('active') and str(p.get('status','')).strip().lower()=='live']
-          if not products or not live:
-              raise SystemExit('PUBLISH BLOCKED: No active Live products. Your current website remains unchanged. Set status=Live and active=Yes for products to publish.')
-          print(f'Workbook validated: {len(products)} products, {len(live)} active Live products.')
+          print(f'Preview catalog validated: {len(products)} products, {len(live)} active Live products.')
+          if not live:
+              print('No products are Live. Draft products remain hidden on normal storefront pages; use ?preview=1 for review.')
           PY
       - name: Discover new or changed Drive product photographs and optimize
         run: python scripts/sync_drive_images.py --catalog /tmp/stinkos-output/catalog.json
