@@ -1703,13 +1703,13 @@
  const el=document.getElementById('preview-cart-content');
  const read=()=>{try{return JSON.parse(localStorage.getItem('stinkos_preview_cart')||'[]')}catch{return []}};
  const safe=x=>String(x??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
- const dollars=x=>Number.isFinite(Number(x))?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(Number(x)):'Price unavailable';
- function render(){const cart=read();let subtotal=0;
+ const dollars=x=>(typeof x==='number'&&Number.isFinite(x))?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(x):'Price unavailable';
+ function render(){const cart=read();let subtotal=0,hasUnpriced=false;
    if(!cart.length){el.innerHTML='<p>Your cart is empty.</p>';return}
    el.innerHTML=cart.map((item,i)=>{
-     subtotal+=Number(item.price||0)*Number(item.quantity||0);
+     if(typeof item.price==='number'&&Number.isFinite(item.price))subtotal+=item.price*Number(item.quantity||0);else hasUnpriced=true;
      return '<section class="stinko-info-section" style="border-bottom:2px solid #111;padding:16px 0"><h2><a href="product.html?slug='+encodeURIComponent(item.slug||'')+'">'+safe(item.title)+'</a></h2><p>Size: '+safe(item.size_id||'Default')+' | Finish: '+safe(item.option_id||'Default')+'</p><p>'+dollars(item.price)+' × '+Number(item.quantity||0)+'</p><button type="button" data-remove="'+i+'" style="border:2px solid #111;background:#fff;padding:6px 12px;cursor:pointer">Remove</button></section>';
-   }).join('')+'<h2 style="margin-top:20px">Subtotal: '+dollars(subtotal)+'</h2>';
+   }).join('')+'<h2 style="margin-top:20px">Subtotal: '+(hasUnpriced?'Pending pricing':dollars(subtotal))+'</h2>';
    el.querySelectorAll('[data-remove]').forEach(btn=>btn.addEventListener('click',()=>{const items=read();items.splice(Number(btn.dataset.remove),1);localStorage.setItem('stinkos_preview_cart',JSON.stringify(items));render();document.querySelectorAll('.cart-btn').forEach(a=>a.textContent='CART ('+items.reduce((n,x)=>n+Number(x.quantity||0),0)+')')}));
  }
  render();
