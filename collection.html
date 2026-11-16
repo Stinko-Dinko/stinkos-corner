@@ -1716,7 +1716,10 @@
  if(vinylRows.length) detailFilters.push({key:'color',label:'Color',field:'__color',options:uniqueOptions(vinylRows,'color','color')});
  const finishRows=uniqueOptions([...vinylRows.map(v=>({value:v.finish,label:v.finish})),...stickerRows.map(v=>({value:v.name,label:v.name}))],'value','label');
  if(finishRows.length) detailFilters.push({key:'finish',label:'Finish',field:'__finish',options:finishRows});
- const filters=baseFilters.filter(f=>['product_type','collection','character','category'].includes(f.key));
+ const typeLabels={decal:'Decals',sticker:'Stickers','sticker sheet':'Sticker Sheets','sticker multi-pack':'Sticker Multi-Packs',magnet:'Magnets',pin:'Pins'};
+ const typeValues=[...new Set(products.map(p=>String(p.product_type||'').trim()).filter(Boolean))];
+ const productTypeFilter={key:'product_type',label:'Product Type',field:'product_type',options:typeValues.map(value=>({value,label:typeLabels[value]||value}))};
+ const filters=[productTypeFilter,...baseFilters.filter(f=>['collection','character','category'].includes(f.key))];
  const selected={}; let visible=20;let revealObserver;
  const pricing=window.STINKO_PRICING;
  // The Shop Sort tab owns labels, order, and enabled choices.
