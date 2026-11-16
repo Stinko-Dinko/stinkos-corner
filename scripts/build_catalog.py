@@ -246,16 +246,20 @@ def build_catalog(workbook_path: Path) -> dict:
     product_raw = unique_rows(product_rows, "product_id", "product")
     products = []
     for pid, r in product_raw.items():
-        category_id = text(r.get("category_id"))
-        if category_id not in category_by_id:
-            raise SystemExit(f"Product {pid} has invalid or missing category_id: {category_id!r}. Add it to Categories first.")
+        category_ids = csv_items(r.get("category_id"))
+        unknown_categories = [cid for cid in category_ids if cid not in category_by_id]
+        if not category_ids or unknown_categories:
+            raise SystemExit(f"Product {pid} has invalid or missing category_id: {', '.join(unknown_categories) if unknown_categories else '(blank)'}. Add IDs to Categories first.")
+        category_id = category_ids[0]
         collection_ids = csv_items(r.get("collection_id"))
         unknown = [cid for cid in collection_ids if cid not in col_raw]
         if unknown:
             raise SystemExit(f"Product {pid} has unknown collection IDs: {', '.join(unknown)}")
-        char_id = text(r.get("character_id"))
-        if char_id and char_id not in char_raw:
-            raise SystemExit(f"Product {pid} has unknown character_id: {char_id}")
+        character_ids = csv_items(r.get("character_id"))
+        unknown_characters = [cid for cid in character_ids if cid not in char_raw]
+        if unknown_characters:
+            raise SystemExit(f"Product {pid} has unknown character_id: {', '.join(unknown_characters)}")
+        char_id = character_ids[0] if character_ids else ""
         kind = text(r.get("product_type")).lower()
         base_images = image_columns(r)
         products.append({
@@ -265,9 +269,9 @@ def build_catalog(workbook_path: Path) -> dict:
             "price": None, "price_override": number(r.get("price_override")),
             "compare_at_price": number(r.get("compare_at_price")),
             "status": text(r.get("status")), "product_type": kind,
-            "category_id": category_id, "category_name": category_by_id[category_id]["name"],
+            "category_id": category_id, "category_ids": category_ids, "category_name": category_by_id[category_id]["name"],
             "collection_id": text(r.get("collection_id")), "collection_ids": collection_ids,
-            "character_id": char_id, "tags": csv_items(r.get("tags")),
+            "character_id": char_id, "character_ids": character_ids, "tags": csv_items(r.get("tags")),
             "images": base_images, "videos": [], "media": [],
             "image_alt_text": text(r.get("image_alt_text")) or text(r.get("title")),
             "homepage_section": text(r.get("homepage_section")),
@@ -345,7 +349,7 @@ def build_catalog(workbook_path: Path) -> dict:
         c["product_ids"] = [p["product_id"] for p in products if c["collection_id"] in p["collection_ids"]]
         c["product_count"] = len(c["product_ids"])
     for c in categories:
-        c["product_ids"] = [p["product_id"] for p in products if p["category_id"] == c["category_id"]]
+        c["product_ids"] = [p["product_id"] for p in products if c["category_id"] in p["category_ids"]]
         c["product_count"] = len(c["product_ids"])
 
     def filter_options(key: str):

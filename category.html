@@ -1695,7 +1695,7 @@
 (() => {
  const catalog=window.STINKO_CATALOG || window.STINKOS_CATALOG || window.stinkoCatalog || null;
  const review=location.protocol==='file:' || new URLSearchParams(location.search).get('preview')==='1';
- const options=(catalog?.categories||[]).filter(v=>v.active);const key=new URLSearchParams(location.search).get('id')||new URLSearchParams(location.search).get('slug')||options[0]?.category_id||'';const scope=options.find(v=>v.category_id===key||v.slug===key);const products=(catalog?.products||[]).filter(p=>(review||p.active===true)&&(review||!['Draft','Archived'].includes(p.status))&&p.category_id===scope?.category_id);const heading=scope?.name||'Category';document.querySelector('.shop-heading').textContent=heading;document.querySelector('.shop-breadcrumb').lastChild.textContent=' > '+heading.toUpperCase();
+ const options=(catalog?.categories||[]).filter(v=>v.active);const key=new URLSearchParams(location.search).get('id')||new URLSearchParams(location.search).get('slug')||options[0]?.category_id||'';const scope=options.find(v=>v.category_id===key||v.slug===key);const products=(catalog?.products||[]).filter(p=>(review||p.active===true)&&(review||!['Draft','Archived'].includes(p.status))&&(p.category_ids||[p.category_id]).includes(scope?.category_id));const heading=scope?.name||'Category';document.querySelector('.shop-heading').textContent=heading;document.querySelector('.shop-breadcrumb').lastChild.textContent=' > '+heading.toUpperCase();
  const baseFilters=(catalog?.shop_filters||[]).filter(f=>f.options?.length);
  // Existing workbook Size Options, Vinyl Options, and Sticker Finishes supply detail filters.
  const applicableTypes=new Set(products.map(p=>String(p.product_type||'').toLowerCase()));
@@ -1732,7 +1732,7 @@
   if(f.field==='__size') return (p.size_options||catalog.size_options||[]).filter(r=>String(r.product_type||'').toLowerCase()===String(p.product_type||'').toLowerCase()&&r.available!==false).map(r=>String(r.size_id));
   if(f.field==='__color') return String(p.product_type||'').toLowerCase()==='decal'?vinylRows.map(r=>String(r.color)):[];
   if(f.field==='__finish') return String(p.product_type||'').toLowerCase()==='decal'?vinylRows.map(r=>String(r.finish)):String(p.product_type||'').toLowerCase().includes('sticker')?stickerRows.map(r=>String(r.name)):[];
-  return wrapValue(f.field==='collection_id'?(p.collection_ids||[p.collection_id]):p[f.field]);
+  return wrapValue(f.field==='collection_id'?(p.collection_ids||[p.collection_id]):f.field==='category_id'?(p.category_ids||[p.category_id]):f.field==='character_id'?(p.character_ids||[p.character_id]):p[f.field]);
  }
  function makeFilter(f){let values=f.options;if(!values.length)return '';return '<section><h3>'+clean(f.label)+'</h3>'+values.map(o=>'<label class="shop-filter-option"><input type="checkbox" data-key="'+clean(f.key)+'" value="'+clean(o.value)+'">'+clean(o.label)+'</label>').join('')+'</section>'}
  const left=filters.filter(f=>['category','product_type','collection','character'].includes(f.key)); const right=filters.filter(f=>!left.includes(f));
