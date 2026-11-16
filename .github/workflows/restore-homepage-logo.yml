@@ -1,0 +1,51 @@
+name: Restore approved homepage logo
+on:
+  push:
+    branches: [catalog-preview]
+    paths:
+      - '.github/workflows/restore-homepage-logo.yml'
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: catalog-preview
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'gdown==6.3.0' 'pillow==13.0.0'
+      - name: Fetch exact approved logo from Drive and place in existing slots
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps
+          import gdown
+          source = Path('/tmp/stinkos-approved-logo.png')
+          gdown.download(id='1mGKulzIEIi7zipvtHrIl1nIpPcZ4sB78', output=str(source), quiet=True)
+          with Image.open(source) as raw:
+              logo = ImageOps.exif_transpose(raw).convert('RGBA')
+          visible = logo.getchannel('A').getbbox()
+          if not visible:
+              raise SystemExit('Logo from Drive has no visible pixels')
+          logo = logo.crop(visible)
+          logo.thumbnail((500, 500), Image.Resampling.LANCZOS)
+          for path in ['images/header/logo.png', 'images/hero/cute-sticker.png', 'images/collections/float2.png']:
+              target = Path(path)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              logo.save(target, 'PNG', optimize=True)
+              print(f'Restored {path} ({logo.width}x{logo.height})')
+          PY
+      - name: Commit the three approved logo assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/header/logo.png images/hero/cute-sticker.png images/collections/float2.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Restore actual approved spaceship kitty logo in three existing slots"
+            git push origin HEAD:catalog-preview
+          fi
