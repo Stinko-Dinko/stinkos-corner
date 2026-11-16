@@ -1886,9 +1886,10 @@
 
                 const slots = Array.from(section.querySelectorAll('.product-card'));
                 const products = (catalog.products || [])
-                    .filter((product) => product.active && product.homepage_section === homepageSectionName)
+                    .filter((product) => product.active && (product.homepage_section === homepageSectionName || (homepageSectionName === 'New Arrivals' && product.new_arrival) || (homepageSectionName === 'Coming Soon' && product.status === 'Coming Soon')))
                     .sort(byPosition);
 
+                section.style.display = products.length ? '' : 'none';
                 slots.forEach((card, index) => {
                     const product = products[index];
                     if (!product) {
@@ -1955,9 +1956,11 @@
                     card.dataset.description = collection.description || '';
 
                     const image = card.querySelector('image');
-                    const rawFilename = (collection.images || [])[0] || '';
-                    const filename = resolveSectionImage(rawFilename, 'collections');
-                    if (image && filename) image.setAttribute('href', filename);
+                    const assigned = (catalog.products || []).find((product) => product.active && (collection.product_ids || []).includes(product.product_id) && (product.images || []).length);
+                    const rawFilename = (collection.images || [])[0] || (assigned && assigned.images[0]) || '';
+                    const resolved = resolveSectionImage(rawFilename, 'collections');
+                    const filename = resolved.startsWith('images/products/') ? resolved.replace(/^images\/products\//, 'images/cards/').replace(/\.(?:jpe?g|png)$/i, '.webp') : resolved;
+                    if (image) image.setAttribute('href', filename);
 
                     const svg = card.querySelector('svg');
                     if (svg) svg.setAttribute('aria-label', `${collection.name || 'Collection'} collection`);
