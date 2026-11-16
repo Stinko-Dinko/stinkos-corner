@@ -11,13 +11,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,sex-drugs-and-rock-n-roll,dirty-emojis,eats",
+      "collection_ids": [
+        "censored-favorites",
+        "sex-drugs-and-rock-n-roll",
+        "dirty-emojis",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -70,7 +79,7 @@ window.STINKOS_CATALOG = {
       "image_alt_text": "Eggplant cut-vinyl decal",
       "homepage_section": "",
       "homepage_position": null,
-      "new_arrival": false,
+      "new_arrival": true,
       "inventory_status": "",
       "inventory_quantity": null,
       "active": true,
@@ -270,13 +279,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -539,13 +554,21 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,offensive-text,poop-n-shit",
+      "collection_ids": [
+        "censored-favorites",
+        "offensive-text",
+        "poop-n-shit"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -598,7 +621,7 @@ window.STINKOS_CATALOG = {
       "image_alt_text": "Censored Eat Shit (Long) cut-vinyl decal",
       "homepage_section": "",
       "homepage_position": null,
-      "new_arrival": false,
+      "new_arrival": true,
       "inventory_status": "",
       "inventory_quantity": null,
       "active": true,
@@ -798,13 +821,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "hearts-and-rainbows,censored-favorites,dirty-emojis,poop-n-shit",
+      "collection_ids": [
+        "hearts-and-rainbows",
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -857,7 +889,7 @@ window.STINKOS_CATALOG = {
       "image_alt_text": "Love Tucson cut-vinyl decal",
       "homepage_section": "",
       "homepage_position": null,
-      "new_arrival": false,
+      "new_arrival": true,
       "inventory_status": "",
       "inventory_quantity": null,
       "active": true,
@@ -1057,13 +1089,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -1306,13 +1344,23 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "hearts-and-rainbows,love-your-fucking-pets,censored-favorites,dirty-emojis,poop-n-shit",
+      "collection_ids": [
+        "hearts-and-rainbows",
+        "love-your-fucking-pets",
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -1535,13 +1583,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "love-your-fucking-pets,censored-favorites,dirty-emojis,poop-n-shit",
+      "collection_ids": [
+        "love-your-fucking-pets",
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -1774,13 +1831,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "love-your-fucking-pets,censored-favorites,dirty-emojis,poop-n-shit",
+      "collection_ids": [
+        "love-your-fucking-pets",
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -2003,13 +2069,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "love-your-fucking-pets,censored-favorites,dirty-emojis,poop-n-shit",
+      "collection_ids": [
+        "love-your-fucking-pets",
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -2232,13 +2307,20 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "love-your-fucking-pets,offensive-text",
+      "collection_ids": [
+        "love-your-fucking-pets",
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -2471,13 +2553,21 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text,poop-n-shit,eats",
+      "collection_ids": [
+        "offensive-text",
+        "poop-n-shit",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -2730,13 +2820,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,dirty-emojis,poop-n-shit,eats",
+      "collection_ids": [
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -2782,7 +2881,7 @@ window.STINKOS_CATALOG = {
       "image_alt_text": "Emoji Eat Shit cut-vinyl decal",
       "homepage_section": "",
       "homepage_position": null,
-      "new_arrival": false,
+      "new_arrival": true,
       "inventory_status": "",
       "inventory_quantity": null,
       "active": true,
@@ -2982,13 +3081,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -3211,13 +3316,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,sex-drugs-and-rock-n-roll,dirty-emojis,eats",
+      "collection_ids": [
+        "censored-favorites",
+        "sex-drugs-and-rock-n-roll",
+        "dirty-emojis",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -3250,7 +3364,7 @@ window.STINKOS_CATALOG = {
       "image_alt_text": "Emoji Peach cut-vinyl decal",
       "homepage_section": "",
       "homepage_position": null,
-      "new_arrival": false,
+      "new_arrival": true,
       "inventory_status": "",
       "inventory_quantity": null,
       "active": true,
@@ -3450,13 +3564,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -3699,13 +3819,24 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,sex-drugs-and-rock-n-roll,dirty-emojis,poop-n-shit",
+      "collection_ids": [
+        "censored-favorites",
+        "sex-drugs-and-rock-n-roll",
+        "dirty-emojis",
+        "poop-n-shit"
+      ],
       "character_id": "poopin-guy",
+      "character_ids": [
+        "poopin-guy"
+      ],
       "tags": [
         "decal",
         "photo-backed"
@@ -3738,7 +3869,7 @@ window.STINKOS_CATALOG = {
       "image_alt_text": "Poopin Guy cut-vinyl decal",
       "homepage_section": "",
       "homepage_position": null,
-      "new_arrival": false,
+      "new_arrival": true,
       "inventory_status": "",
       "inventory_quantity": null,
       "active": true,
@@ -3938,13 +4069,24 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "love-your-fucking-pets,censored-favorites,poop-n-shit",
+      "collection_ids": [
+        "love-your-fucking-pets",
+        "censored-favorites",
+        "poop-n-shit"
+      ],
       "character_id": "asshole-cat",
+      "character_ids": [
+        "asshole-cat",
+        "shithead-family"
+      ],
       "tags": [
         "decal",
         "photo-backed"
@@ -3967,7 +4109,7 @@ window.STINKOS_CATALOG = {
       "image_alt_text": "Asshole Cat cut-vinyl decal",
       "homepage_section": "",
       "homepage_position": null,
-      "new_arrival": false,
+      "new_arrival": true,
       "inventory_status": "",
       "inventory_quantity": null,
       "active": true,
@@ -4167,13 +4309,20 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "love-your-fucking-pets,offensive-text",
+      "collection_ids": [
+        "love-your-fucking-pets",
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -4416,13 +4565,20 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "love-your-fucking-pets,offensive-text",
+      "collection_ids": [
+        "love-your-fucking-pets",
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -4645,13 +4801,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "decal",
       "category_id": "window-stickers",
+      "category_ids": [
+        "window-stickers"
+      ],
       "category_name": "Window Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "decal",
         "photo-backed"
@@ -4874,13 +5036,21 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker sheet",
       "category_id": "sticker-sheets",
+      "category_ids": [
+        "sticker-sheets"
+      ],
       "category_name": "Sticker Sheets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "hearts-and-rainbows",
+      "collection_ids": [
+        "hearts-and-rainbows"
+      ],
       "character_id": "magical-as-fuck-unicorn",
+      "character_ids": [
+        "magical-as-fuck-unicorn"
+      ],
       "tags": [
         "sticker_sheet",
         "photo-backed"
@@ -4980,13 +5150,21 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker",
       "category_id": "stickers",
+      "category_ids": [
+        "stickers"
+      ],
       "category_name": "Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "sex-drugs-and-rock-n-roll,offensive-text,eats",
+      "collection_ids": [
+        "sex-drugs-and-rock-n-roll",
+        "offensive-text",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "sticker",
         "photo-backed"
@@ -5095,13 +5273,21 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker",
       "category_id": "stickers",
+      "category_ids": [
+        "stickers"
+      ],
       "category_name": "Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "sex-drugs-and-rock-n-roll,offensive-text,eats",
+      "collection_ids": [
+        "sex-drugs-and-rock-n-roll",
+        "offensive-text",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "sticker",
         "photo-backed"
@@ -5200,13 +5386,20 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker",
       "category_id": "stickers",
+      "category_ids": [
+        "stickers"
+      ],
       "category_name": "Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "hearts-and-rainbows,offensive-text",
+      "collection_ids": [
+        "hearts-and-rainbows",
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "sticker",
         "photo-backed"
@@ -5305,13 +5498,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker",
       "category_id": "stickers",
+      "category_ids": [
+        "stickers"
+      ],
       "category_name": "Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "sticker",
         "photo-backed"
@@ -5410,13 +5609,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker",
       "category_id": "stickers",
+      "category_ids": [
+        "stickers"
+      ],
       "category_name": "Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "sticker",
         "photo-backed"
@@ -5515,13 +5720,21 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker",
       "category_id": "stickers",
+      "category_ids": [
+        "stickers"
+      ],
       "category_name": "Stickers",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "hearts-and-rainbows",
+      "collection_ids": [
+        "hearts-and-rainbows"
+      ],
       "character_id": "magical-as-fuck-unicorn",
+      "character_ids": [
+        "magical-as-fuck-unicorn"
+      ],
       "tags": [
         "sticker",
         "photo-backed"
@@ -5627,13 +5840,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker sheet",
       "category_id": "sticker-sheets",
+      "category_ids": [
+        "sticker-sheets"
+      ],
       "category_name": "Sticker Sheets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "zombie-apocalypse",
+      "collection_ids": [
+        "zombie-apocalypse"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "sticker_sheet",
         "photo-backed"
@@ -5716,13 +5935,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "sticker sheet",
       "category_id": "sticker-sheets",
+      "category_ids": [
+        "sticker-sheets"
+      ],
       "category_name": "Sticker Sheets",
-      "collection_id": "",
-      "collection_ids": [],
-      "character_id": "",
+      "collection_id": "sex-drugs-and-rock-n-roll,eats",
+      "collection_ids": [
+        "sex-drugs-and-rock-n-roll",
+        "eats"
+      ],
+      "character_id": "poopin-guy",
+      "character_ids": [
+        "poopin-guy"
+      ],
       "tags": [
         "sticker_sheet",
         "photo-backed"
@@ -5815,13 +6043,21 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,dirty-emojis,eats",
+      "collection_ids": [
+        "censored-favorites",
+        "dirty-emojis",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "magnet",
         "photo-backed"
@@ -5891,13 +6127,20 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "hearts-and-rainbows,offensive-text",
+      "collection_ids": [
+        "hearts-and-rainbows",
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "magnet",
         "photo-backed"
@@ -5967,13 +6210,23 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
-      "character_id": "",
+      "collection_id": "censored-favorites,dirty-emojis,poop-n-shit",
+      "collection_ids": [
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit"
+      ],
+      "character_id": "poopin-guy",
+      "character_ids": [
+        "poopin-guy"
+      ],
       "tags": [
         "magnet",
         "photo-backed"
@@ -6043,13 +6296,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,dirty-emojis,poop-n-shit,eats",
+      "collection_ids": [
+        "censored-favorites",
+        "dirty-emojis",
+        "poop-n-shit",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "magnet",
         "photo-backed"
@@ -6119,13 +6381,19 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "offensive-text",
+      "collection_ids": [
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "magnet",
         "photo-backed"
@@ -6205,13 +6473,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,sex-drugs-and-rock-n-roll,dirty-emojis,eats",
+      "collection_ids": [
+        "censored-favorites",
+        "sex-drugs-and-rock-n-roll",
+        "dirty-emojis",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "magnet",
         "photo-backed"
@@ -6291,13 +6568,20 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "hearts-and-rainbows,offensive-text",
+      "collection_ids": [
+        "hearts-and-rainbows",
+        "offensive-text"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "magnet",
         "photo-backed"
@@ -6387,13 +6671,22 @@ window.STINKOS_CATALOG = {
       "price": null,
       "price_override": null,
       "compare_at_price": null,
-      "status": "Live",
+      "status": "Active",
       "product_type": "magnet",
       "category_id": "magnets",
+      "category_ids": [
+        "magnets"
+      ],
       "category_name": "Magnets",
-      "collection_id": "",
-      "collection_ids": [],
+      "collection_id": "censored-favorites,sex-drugs-and-rock-n-roll,dirty-emojis,eats",
+      "collection_ids": [
+        "censored-favorites",
+        "sex-drugs-and-rock-n-roll",
+        "dirty-emojis",
+        "eats"
+      ],
       "character_id": "",
+      "character_ids": [],
       "tags": [
         "magnet",
         "photo-backed"
@@ -6506,10 +6799,21 @@ window.STINKOS_CATALOG = {
       "product_count": 6
     },
     {
+      "category_id": "bong-stickers",
+      "name": "Bong Stickers",
+      "default_product_type": "",
+      "display_order": 3,
+      "description": "Full color stickers, sticker sheets, and decals to decorate any bong",
+      "slug": "bong-stickers",
+      "active": true,
+      "product_ids": [],
+      "product_count": 0
+    },
+    {
       "category_id": "sticker-sheets",
       "name": "Sticker Sheets",
       "default_product_type": "sticker sheet",
-      "display_order": 3,
+      "display_order": 4,
       "description": "Sheets containing multiple printed stickers",
       "slug": "sticker-sheets",
       "active": true,
@@ -6524,7 +6828,7 @@ window.STINKOS_CATALOG = {
       "category_id": "sticker-multi-packs",
       "name": "Sticker Multi-Packs",
       "default_product_type": "sticker multi-pack",
-      "display_order": 4,
+      "display_order": 5,
       "description": "Packs of multiple individual stickers",
       "slug": "sticker-multi-packs",
       "active": true,
@@ -6535,7 +6839,7 @@ window.STINKOS_CATALOG = {
       "category_id": "magnets",
       "name": "Magnets",
       "default_product_type": "magnet",
-      "display_order": 5,
+      "display_order": 6,
       "description": "Decorative magnets",
       "slug": "magnets",
       "active": true,
@@ -6555,7 +6859,7 @@ window.STINKOS_CATALOG = {
       "category_id": "pins",
       "name": "Pins",
       "default_product_type": "pin",
-      "display_order": 6,
+      "display_order": 7,
       "description": "Wearable pins",
       "slug": "pins",
       "active": true,
@@ -6565,64 +6869,181 @@ window.STINKOS_CATALOG = {
   ],
   "collections": [
     {
-      "collection_id": "hearts-and-rainbows",
-      "name": "Hearts and Rainbows",
-      "description": "",
-      "images": [],
-      "homepage_position": 1,
-      "button_text": "Shop Now",
-      "slug": "hearts-and-rainbows",
-      "active": true,
-      "product_ids": [],
-      "product_count": 0
-    },
-    {
       "collection_id": "love-your-fucking-pets",
       "name": "Love Your Fucking Pets",
       "description": "",
       "images": [],
-      "homepage_position": 2,
+      "homepage_position": 1,
       "button_text": "Shop Now",
       "slug": "love-your-fucking-pets",
       "active": true,
-      "product_ids": [],
-      "product_count": 0
-    },
-    {
-      "collection_id": "censored-favorites",
-      "name": "Censored Favorites",
-      "description": "",
-      "images": [],
-      "homepage_position": 3,
-      "button_text": "Shop Now",
-      "slug": "censored-favorites",
-      "active": true,
-      "product_ids": [],
-      "product_count": 0
+      "product_ids": [
+        "cat-heart-poop-decal",
+        "dog-heart-poop-decal",
+        "bird-poop-trail-decal",
+        "cat-poop-trail-decal",
+        "my-cat-thinks-you-suck-decal",
+        "asshole-cat-decal",
+        "my-dog-thinks-you-suck-decal",
+        "my-bird-thinks-you-suck-decal"
+      ],
+      "product_count": 8
     },
     {
       "collection_id": "dirty-emojis",
       "name": "Dirty Emojis",
       "description": "",
       "images": [],
-      "homepage_position": null,
+      "homepage_position": 2,
       "button_text": "Shop Now",
       "slug": "dirty-emojis",
       "active": true,
-      "product_ids": [],
-      "product_count": 0
+      "product_ids": [
+        "eggplant-decal",
+        "love-tucson-decal",
+        "cat-heart-poop-decal",
+        "dog-heart-poop-decal",
+        "bird-poop-trail-decal",
+        "cat-poop-trail-decal",
+        "emoji-eat-shit-decal",
+        "emoji-peach-decal",
+        "poopin-guy-decal",
+        "emoji-tongue-magnet",
+        "poop-emoji-magnet",
+        "eat-emoji-magnet",
+        "eggplant-emoji-magnet",
+        "emoji-peach-magnet"
+      ],
+      "product_count": 14
     },
     {
       "collection_id": "offensive-text",
       "name": "Offensive Text",
       "description": "",
       "images": [],
-      "homepage_position": null,
+      "homepage_position": 3,
       "button_text": "Shop Now",
       "slug": "offensive-text",
       "active": true,
-      "product_ids": [],
-      "product_count": 0
+      "product_ids": [
+        "fuck-you-knewave-decal",
+        "censored-eat-shit-long-decal",
+        "cunt-decal",
+        "my-cat-thinks-you-suck-decal",
+        "eat-shit-stacked-decal",
+        "bitch-script-decal",
+        "fuck-off-decal",
+        "my-dog-thinks-you-suck-decal",
+        "my-bird-thinks-you-suck-decal",
+        "fuck-off-street-sign-decal",
+        "hotdog-slut-sticker",
+        "creampie-whore-sticker",
+        "fuck-you-so-much-heart-sticker",
+        "go-fuck-yourself-retro-sticker",
+        "cunt-multicolor-lettering-sticker",
+        "fuck-off-rainbow-magnet",
+        "go-fuck-yourself-retro-magnet",
+        "fuck-you-so-much-heart-magnet"
+      ],
+      "product_count": 18
+    },
+    {
+      "collection_id": "censored-favorites",
+      "name": "Censored Favorites",
+      "description": "",
+      "images": [],
+      "homepage_position": null,
+      "button_text": "Shop Now",
+      "slug": "censored-favorites",
+      "active": true,
+      "product_ids": [
+        "eggplant-decal",
+        "censored-eat-shit-long-decal",
+        "love-tucson-decal",
+        "cat-heart-poop-decal",
+        "dog-heart-poop-decal",
+        "bird-poop-trail-decal",
+        "cat-poop-trail-decal",
+        "emoji-eat-shit-decal",
+        "emoji-peach-decal",
+        "poopin-guy-decal",
+        "asshole-cat-decal",
+        "emoji-tongue-magnet",
+        "poop-emoji-magnet",
+        "eat-emoji-magnet",
+        "eggplant-emoji-magnet",
+        "emoji-peach-magnet"
+      ],
+      "product_count": 16
+    },
+    {
+      "collection_id": "eats",
+      "name": "Eats",
+      "description": "",
+      "images": [],
+      "homepage_position": null,
+      "button_text": "Shop Now",
+      "slug": "eats",
+      "active": true,
+      "product_ids": [
+        "eggplant-decal",
+        "eat-shit-stacked-decal",
+        "emoji-eat-shit-decal",
+        "emoji-peach-decal",
+        "hotdog-slut-sticker",
+        "creampie-whore-sticker",
+        "sex-drugs-rock-n-roll-sticker-sheet",
+        "emoji-tongue-magnet",
+        "eat-emoji-magnet",
+        "eggplant-emoji-magnet",
+        "emoji-peach-magnet"
+      ],
+      "product_count": 11
+    },
+    {
+      "collection_id": "hearts-and-rainbows",
+      "name": "Hearts and Rainbows",
+      "description": "",
+      "images": [],
+      "homepage_position": null,
+      "button_text": "Shop Now",
+      "slug": "hearts-and-rainbows",
+      "active": true,
+      "product_ids": [
+        "love-tucson-decal",
+        "cat-heart-poop-decal",
+        "magical-as-fuck-sticker-sheet",
+        "fuck-you-so-much-heart-sticker",
+        "magical-as-fuck-unicorn-sticker",
+        "fuck-off-rainbow-magnet",
+        "fuck-you-so-much-heart-magnet"
+      ],
+      "product_count": 7
+    },
+    {
+      "collection_id": "poop-n-shit",
+      "name": "Poop 'n' Shit",
+      "description": "",
+      "images": [],
+      "homepage_position": null,
+      "button_text": "Shop Now",
+      "slug": "poop-n-shit",
+      "active": true,
+      "product_ids": [
+        "censored-eat-shit-long-decal",
+        "love-tucson-decal",
+        "cat-heart-poop-decal",
+        "dog-heart-poop-decal",
+        "bird-poop-trail-decal",
+        "cat-poop-trail-decal",
+        "eat-shit-stacked-decal",
+        "emoji-eat-shit-decal",
+        "poopin-guy-decal",
+        "asshole-cat-decal",
+        "poop-emoji-magnet",
+        "eat-emoji-magnet"
+      ],
+      "product_count": 12
     },
     {
       "collection_id": "sex-drugs-and-rock-n-roll",
@@ -6633,8 +7054,17 @@ window.STINKOS_CATALOG = {
       "button_text": "Shop Now",
       "slug": "sex-drugs-and-rock-n-roll",
       "active": true,
-      "product_ids": [],
-      "product_count": 0
+      "product_ids": [
+        "eggplant-decal",
+        "emoji-peach-decal",
+        "poopin-guy-decal",
+        "hotdog-slut-sticker",
+        "creampie-whore-sticker",
+        "sex-drugs-rock-n-roll-sticker-sheet",
+        "eggplant-emoji-magnet",
+        "emoji-peach-magnet"
+      ],
+      "product_count": 8
     },
     {
       "collection_id": "zombie-apocalypse",
@@ -6645,8 +7075,10 @@ window.STINKOS_CATALOG = {
       "button_text": "Shop Now",
       "slug": "zombie-apocalypse",
       "active": true,
-      "product_ids": [],
-      "product_count": 0
+      "product_ids": [
+        "zombie-attack-sticker-sheet"
+      ],
+      "product_count": 1
     }
   ],
   "characters": [
@@ -6667,10 +7099,7 @@ window.STINKOS_CATALOG = {
       "character_id": "stinko",
       "name": "Stinko",
       "description": "",
-      "images": [
-        "character1-1.png",
-        "character1-2.png"
-      ],
+      "images": [],
       "homepage_position": 2,
       "button_text": "Shop Now",
       "slug": "stinko",
@@ -6680,7 +7109,10 @@ window.STINKOS_CATALOG = {
       "character_id": "magical-as-fuck-unicorn",
       "name": "Magical As Fuck Unicorn",
       "description": "",
-      "images": [],
+      "images": [
+        "character1-1.png",
+        "character1-2.png"
+      ],
       "homepage_position": 3,
       "button_text": "Shop Now",
       "slug": "magical-as-fuck-unicorn",
@@ -6723,6 +7155,10 @@ window.STINKOS_CATALOG = {
           "label": "Stickers"
         },
         {
+          "value": "bong-stickers",
+          "label": "Bong Stickers"
+        },
+        {
           "value": "sticker-sheets",
           "label": "Sticker Sheets"
         },
@@ -6747,16 +7183,8 @@ window.STINKOS_CATALOG = {
       "order": 2,
       "options": [
         {
-          "value": "hearts-and-rainbows",
-          "label": "Hearts and Rainbows"
-        },
-        {
           "value": "love-your-fucking-pets",
           "label": "Love Your Fucking Pets"
-        },
-        {
-          "value": "censored-favorites",
-          "label": "Censored Favorites"
         },
         {
           "value": "dirty-emojis",
@@ -6765,6 +7193,22 @@ window.STINKOS_CATALOG = {
         {
           "value": "offensive-text",
           "label": "Offensive Text"
+        },
+        {
+          "value": "censored-favorites",
+          "label": "Censored Favorites"
+        },
+        {
+          "value": "eats",
+          "label": "Eats"
+        },
+        {
+          "value": "hearts-and-rainbows",
+          "label": "Hearts and Rainbows"
+        },
+        {
+          "value": "poop-n-shit",
+          "label": "Poop 'n' Shit"
         },
         {
           "value": "sex-drugs-and-rock-n-roll",
@@ -7310,7 +7754,15 @@ window.STINKOS_CATALOG = {
       "price": null
     }
   ],
-  "new_arrivals": [],
+  "new_arrivals": [
+    "eggplant-decal",
+    "censored-eat-shit-long-decal",
+    "love-tucson-decal",
+    "emoji-eat-shit-decal",
+    "emoji-peach-decal",
+    "poopin-guy-decal",
+    "asshole-cat-decal"
+  ],
   "shared_media": [
     {
       "type": "image",
