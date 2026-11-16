@@ -1748,12 +1748,40 @@
  $('shop-sort').addEventListener('change',()=>{visible=20;render()});$('shop-more').addEventListener('click',()=>{visible+=20;render()});
  function card(p,i){const imgs=p.images||[];const id='shop-clip-'+i;const primary=photo(imgs[0]), secondary=photo(imgs[1]);let availability=String(p.inventory_status||'');const sale=!/out of stock|sold out/i.test(availability);const badge=p.status==='Coming Soon'?'COMING SOON':!sale?'SOLD OUT':'';
  // Product choices and final variant prices are selected on product.html.
- return '<article class="shop-card product-card scroll-reveal" style="--reveal-delay:'+Math.min(i%4*65,195)+'ms"><a class="shop-card-link" href="product.html?slug='+encodeURIComponent(p.slug||p.product_id)+'" aria-label="View '+clean(p.title)+' details"><div class="burst-shadow-container"><svg class="shop-burst-svg" viewBox="0 0 1348 1180" role="img" aria-label="'+clean(p.image_alt_text||p.title)+'"><defs><clipPath id="'+id+'"><path d="'+clip+'"/></clipPath></defs><g clip-path="url(#'+id+')"><rect width="1348" height="1180" fill="#eeeeee"/><text x="674" y="575" text-anchor="middle" font-size="56" font-family="Nunito" font-weight="900" fill="#666">PHOTO COMING SOON</text>'+(primary?'<image class="shop-burst-img primary" href="'+primary+'" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"/>':'')+(secondary?'<image class="shop-burst-img secondary" href="'+secondary+'" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"/>':'')+'</g><path d="'+clip+'" fill="none" stroke="#111" stroke-width="16" stroke-linejoin="round"/></svg>'+(badge?'<span class="shop-label">'+badge+'</span>':'')+'</div><h2 class="product-name">'+clean(p.title)+'</h2><p class="product-price">'+pricing.listPrice(catalog,p)+'</p></a><button class="shop-card-action" type="button" data-slug="'+clean(p.slug||p.product_id)+'">'+(sale&&pricing.startingPrice(catalog,p)!==null?'CHOOSE OPTIONS':'VIEW DETAILS')+'</button></article>'}
+ return '<article class="shop-card product-card scroll-reveal" style="--reveal-delay:'+Math.min(i%4*65,195)+'ms"><div class="burst-shadow-container"><svg class="shop-burst-svg" viewBox="0 0 1348 1180" role="img" aria-label="'+clean(p.image_alt_text||p.title)+'"><defs><clipPath id="'+id+'"><path d="'+clip+'"/></clipPath></defs><g clip-path="url(#'+id+')"><rect width="1348" height="1180" fill="#eeeeee"/><text x="674" y="575" text-anchor="middle" font-size="56" font-family="Nunito" font-weight="900" fill="#666">PHOTO COMING SOON</text>'+(primary?'<image class="shop-burst-img primary" href="'+primary+'" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"/>':'')+(secondary?'<image class="shop-burst-img secondary" href="'+secondary+'" width="1348" height="1180" preserveAspectRatio="xMidYMid meet"/>':'')+'</g><path d="'+clip+'" fill="none" stroke="#111" stroke-width="16" stroke-linejoin="round"/></svg>'+(badge?'<span class="shop-label">'+badge+'</span>':'')+'<button class="shop-card-action" type="button" data-product="'+encodeURIComponent(p.product_id)+'"'+(!sale||p.status==='Coming Soon'?' disabled':'')+'>'+(!sale?'SOLD OUT':p.status==='Coming Soon'?'COMING SOON':'ADD TO CART')+'</button></div><a class="shop-card-link" href="product.html?slug='+encodeURIComponent(p.slug||p.product_id)+'" aria-label="View '+clean(p.title)+' details"><h2 class="product-name">'+clean(p.title)+'</h2></a><p class="product-price">'+pricing.listPrice(catalog,p)+'</p></article>'}
  function render(){let list=products.filter(p=>filters.every(f=>{let values=selected[f.key];return !values?.size||[...values].some(v=>filterValues(p,f).includes(v))}));let sort=$('shop-sort').value;
  if(sort==='price_asc')list.sort((a,b)=>(pricing.startingPrice(catalog,a)??Infinity)-(pricing.startingPrice(catalog,b)??Infinity));else if(sort==='price_desc')list.sort((a,b)=>(pricing.startingPrice(catalog,b)??-Infinity)-(pricing.startingPrice(catalog,a)??-Infinity));else if(sort==='alpha_asc')list.sort((a,b)=>a.title.localeCompare(b.title));else if(sort==='alpha_desc')list.sort((a,b)=>b.title.localeCompare(a.title));else if(sort==='category_asc')list.sort((a,b)=>String(a.category_name||'').localeCompare(String(b.category_name||''))||a.title.localeCompare(b.title));else if(sort==='category_desc')list.sort((a,b)=>String(b.category_name||'').localeCompare(String(a.category_name||''))||a.title.localeCompare(b.title));else if(sort==='newest')list.sort((a,b)=>String(b.created_at||b.release_date||'').localeCompare(String(a.created_at||a.release_date||'')));else if(sort==='featured')list.sort((a,b)=>(a.featured_rank??999)-(b.featured_rank??999));
  // Best Selling: no sales metrics, so keep source ordering; never invent rankings.
  $('shop-grid').innerHTML=list.slice(0,visible).map(card).join('');$('shop-count').textContent='Showing '+Math.min(list.length,visible)+' of '+list.length+' products';$('shop-more').hidden=visible>=list.length;$('shop-empty').hidden=list.length>0;$('shop-reset').hidden=!Object.values(selected).some(s=>s.size);
- document.querySelectorAll('.shop-card-action').forEach(btn=>btn.addEventListener('click',()=>{window.location.href='product.html?slug='+encodeURIComponent(btn.dataset.slug)}));
+ document.querySelectorAll('.shop-card-action').forEach(btn=>btn.addEventListener('click',()=>{
+   const p=(catalog.products||[]).find(x=>x.product_id===decodeURIComponent(btn.dataset.product||''));
+   if(!p||btn.disabled)return;
+   const sizes=pricing.sizeOptions(p).filter(x=>x.available);
+   const options=pricing.materialOptions(p).filter(x=>x.available);
+   let choice=null;
+   for(const size of (sizes.length?sizes:[{size_id:''}])){
+     for(const option of (options.length?options:[null])){
+       const sizeId=size.size_id||'',optionId=option?pricing.optionKey(p,option):'';
+       const price=pricing.priceFor(catalog,p,sizeId,optionId);
+       if(!choice)choice={sizeId,optionId,price};
+       if(price!==null){choice={sizeId,optionId,price};break;}
+     }
+     if(choice&&choice.price!==null)break;
+   }
+   if(!choice)choice={sizeId:'',optionId:'',price:null};
+   const key='stinkos_preview_cart';let cart=[];
+   try{cart=JSON.parse(localStorage.getItem(key)||'[]')}catch{}
+   const variantKey=[p.product_id,choice.sizeId,choice.optionId].join('|');
+   const existing=cart.find(x=>x.variant_key===variantKey);
+   if(existing)existing.quantity+=1;
+   else cart.push({variant_key:variantKey,product_id:p.product_id,slug:p.slug,title:p.title,
+     size_id:choice.sizeId,option_id:choice.optionId,price:choice.price,quantity:1,preorder:false});
+   localStorage.setItem(key,JSON.stringify(cart));
+   const count=cart.reduce((sum,x)=>sum+Number(x.quantity||0),0);
+   document.querySelectorAll('.cart-btn').forEach(a=>a.textContent='CART ('+count+')');
+   btn.textContent='ADDED!';
+   setTimeout(()=>{if(btn.isConnected)btn.textContent='ADD TO CART'},1100);
+ }));
  if(revealObserver)revealObserver.disconnect();if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObserver.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});document.querySelectorAll('.shop-grid .scroll-reveal').forEach(el=>revealObserver.observe(el))}else document.querySelectorAll('.shop-grid .scroll-reveal').forEach(el=>el.classList.add('is-visible'));
  }
  try{const cart=JSON.parse(localStorage.getItem('stinkos_preview_cart')||'[]');const count=cart.reduce((sum,c)=>sum+(c.quantity||0),0);const headerCart=document.querySelector('.cart-btn');if(headerCart)headerCart.textContent='CART ('+count+')'}catch{}
