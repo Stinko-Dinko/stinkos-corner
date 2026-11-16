@@ -1859,7 +1859,7 @@
             }
 
             const formatPrice = (value) => {
-                const numeric = Number(value);
+                const numeric = typeof value === 'number' ? value : NaN;
                 if (!Number.isFinite(numeric)) return '';
                 return new Intl.NumberFormat('en-US', {
                     style: 'currency',
@@ -1905,11 +1905,59 @@
                     card.dataset.collectionId = product.collection_id || '';
                     card.dataset.characterId = product.character_id || '';
                     card.dataset.inventoryStatus = product.inventory_status || '';
+                    card.href = 'product.html?slug=' + encodeURIComponent(product.slug || product.product_id);
+                    if (homepageSectionName === 'New Arrivals') {
+                        const action = card.querySelector('.product-hover-action');
+                        if (action) {
+                            action.setAttribute('role', 'button');
+                            action.setAttribute('tabindex', '0');
+                            action.setAttribute('aria-label', 'Add ' + (product.title || 'product') + ' to cart');
+                            action.style.pointerEvents = 'auto';
+                            const quickAdd = (event) => {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                const pricing = window.STINKO_PRICING;
+                                const sizes = (product.size_options || []).filter(x => x.available);
+                                const options = product.product_type === 'decal'
+                                    ? (product.vinyl_options || []).filter(x => x.available)
+                                    : (product.finish_options || []).filter(x => x.available);
+                                let choice = null;
+                                for (const size of (sizes.length ? sizes : [{size_id: ''}])) {
+                                    for (const option of (options.length ? options : [null])) {
+                                        const sizeId = size.size_id || '';
+                                        const optionId = option ? (product.product_type === 'decal' ? option.vinyl_option_id : option.finish_id) : '';
+                                        const price = pricing ? pricing.priceFor(catalog, product, sizeId, optionId) : null;
+                                        if (!choice) choice = {sizeId, optionId, price};
+                                        if (price !== null) {choice = {sizeId, optionId, price}; break;}
+                                    }
+                                    if (choice && choice.price !== null) break;
+                                }
+                                if (!choice) choice = {sizeId: '', optionId: '', price: null};
+                                let cart = [];
+                                try {cart = JSON.parse(localStorage.getItem('stinkos_preview_cart') || '[]')} catch {}
+                                const key = [product.product_id, choice.sizeId, choice.optionId].join('|');
+                                const existing = cart.find(item => item.variant_key === key);
+                                if (existing) existing.quantity += 1;
+                                else cart.push({variant_key:key, product_id:product.product_id, slug:product.slug,
+                                    title:product.title, size_id:choice.sizeId, option_id:choice.optionId,
+                                    price:choice.price, quantity:1, preorder:false});
+                                localStorage.setItem('stinkos_preview_cart', JSON.stringify(cart));
+                                const count = cart.reduce((total,item) => total + Number(item.quantity || 0), 0);
+                                document.querySelectorAll('.cart-btn').forEach(button => button.textContent = 'CART (' + count + ')');
+                                action.textContent = 'ADDED!';
+                                setTimeout(() => {if (action.isConnected) action.textContent = 'Add to Cart'}, 1100);
+                            };
+                            action.addEventListener('click', quickAdd);
+                            action.addEventListener('keydown', (event) => {
+                                if (event.key === 'Enter' || event.key === ' ') quickAdd(event);
+                            });
+                        }
+                    }
 
                     const title = card.querySelector('.product-name');
                     const price = card.querySelector('.product-price');
                     if (title) title.textContent = product.title || '';
-                    if (price) price.textContent = formatPrice(product.price);
+                    if (price) price.textContent = product.price === null ? 'Price not set' : formatPrice(product.price);
 
                     const svg = card.querySelector('.burst-image-wrapper');
                     if (svg) {
