@@ -177,7 +177,14 @@ def main():
                 except Exception as exc:
                     local.unlink(missing_ok=True)
                     if attempt == 3:
-                        die(f"Download failed after three attempts: {path}: {exc}")
+                        existing = ROOT / path
+                        existing_card = image_card_target(path) if path.startswith("images/products/") else None
+                        if existing.is_file() and (existing_card is None or existing_card.is_file()):
+                            print(f"WARNING: Drive download failed for {path}; retaining existing GitHub image and card. Retry a future sync to check for updates.", flush=True)
+                            break
+                        die(f"Download failed after three attempts and no complete GitHub fallback exists: {path}: {exc}")
+            if not local.is_file():
+                continue
             digest = sha256(local)
             dest = ROOT / path
             card = image_card_target(path) if path.startswith("images/products/") else None
