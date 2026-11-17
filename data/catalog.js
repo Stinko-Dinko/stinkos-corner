@@ -8,7 +8,7 @@ window.STINKOS_CATALOG = {
       "title": "Eggplant",
       "short_description": "An eggplant outline decal with plenty of attitude.",
       "full_description": "A clean, unmistakable eggplant silhouette with a leaf-shaped stem. Choose a size and make it yours in standard vinyl, specialty finishes, or the purple-and-green multicolor version.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -264,10 +264,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "fuck-you-knewave-decal",
@@ -276,7 +276,7 @@ window.STINKOS_CATALOG = {
       "title": "Fuck You (Knewave)",
       "short_description": "A bold FUCK YOU decal in chunky Knewave lettering.",
       "full_description": "No fine print, no mixed signals. This cut-vinyl decal spells out FUCK YOU in thick, playful Knewave-style letters and comes in multiple photographed sizes.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -539,10 +539,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "censored-eat-shit-long-decal",
@@ -551,7 +551,7 @@ window.STINKOS_CATALOG = {
       "title": "Censored Eat Shit (Long)",
       "short_description": "An elongated EAT SHIT decal with a poop symbol in the lettering.",
       "full_description": "A long, narrow cut-vinyl design that spells out EAT SHIT, with a poop icon taking the place of a letter. Made for anyone who prefers their insults with a tiny visual punchline.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -806,10 +806,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "love-tucson-decal",
@@ -818,7 +818,7 @@ window.STINKOS_CATALOG = {
       "title": "Love Tucson",
       "short_description": "An Arizona-outline decal with a tiny poop and heart.",
       "full_description": "An outline of Arizona with a little poop symbol and a heart inside. A proudly irreverent way to show love for Tucson, photographed in pink, black, and purple vinyl.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -1074,10 +1074,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "cunt-decal",
@@ -1086,7 +1086,7 @@ window.STINKOS_CATALOG = {
       "title": "Cunt",
       "short_description": "The word CUNT in oversized block lettering.",
       "full_description": "Four big letters and absolutely no attempt to soften them. This cut-vinyl decal uses straight, bold block lettering, with white and pink versions pictured.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -1329,10 +1329,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "cat-heart-poop-decal",
@@ -1341,7 +1341,7 @@ window.STINKOS_CATALOG = {
       "title": "Cat Heart Poop",
       "short_description": "A line-art cat, heart, paw, and poop symbol sequence.",
       "full_description": "A playful row of four outlined symbols: a cat, a heart, a paw print, and a poop pile. One little visual sentence for people who adore their cats and know what comes with them.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -1568,10 +1568,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "dog-heart-poop-decal",
@@ -1580,7 +1580,7 @@ window.STINKOS_CATALOG = {
       "title": "Dog Heart Poop",
       "short_description": "A line-art dog, heart, paw, and poop symbol sequence.",
       "full_description": "Four minimal outlined symbols combine a dog, a heart, a paw print, and a poop pile. A compact design that says a lot about life with a dog without needing words.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -1816,10 +1816,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "bird-poop-trail-decal",
@@ -1828,7 +1828,7 @@ window.STINKOS_CATALOG = {
       "title": "Bird Poop Trail",
       "short_description": "A bird outline followed by a trail of tiny poop symbols.",
       "full_description": "A simple pigeon-like bird silhouette, with several little poop icons trailing behind it. A lighthearted reminder of what birds leave in their wake.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -2054,10 +2054,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "cat-poop-trail-decal",
@@ -2066,7 +2066,7 @@ window.STINKOS_CATALOG = {
       "title": "Cat Poop Trail",
       "short_description": "A cat outline with a trail of little poop symbols.",
       "full_description": "A mischievous line-art cat followed by a neat line of tiny poop piles. It's the less glamorous side of cat ownership, rendered as one very direct decal.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -2292,10 +2292,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "my-cat-thinks-you-suck-decal",
@@ -2304,7 +2304,7 @@ window.STINKOS_CATALOG = {
       "title": "My Cat Thinks You Suck",
       "short_description": "Cat ears and eyes above the phrase MY CAT THINKS YOU SUCK.",
       "full_description": "The judgmental stare says it first. Cat ears and sharply drawn eyes sit above the words MY CAT THINKS YOU SUCK in a deliberately cheeky cut-vinyl design.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -2538,10 +2538,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "eat-shit-stacked-decal",
@@ -2550,7 +2550,7 @@ window.STINKOS_CATALOG = {
       "title": "Eat Shit (Stacked)",
       "short_description": "EAT SHIT lettering arranged in two stacked lines.",
       "full_description": "Two short words, stacked for maximum impact. The plain-text EAT SHIT decal has simple lowercase lettering and is pictured in purple and white versions.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -2805,10 +2805,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "emoji-eat-shit-decal",
@@ -2817,7 +2817,7 @@ window.STINKOS_CATALOG = {
       "title": "Emoji Eat Shit",
       "short_description": "A holographic visual pun made from eating utensils and a poop emoji.",
       "full_description": "A fork, plate, and knife sit beside a poop symbol to turn EAT SHIT into a pictogram. The photographed holographic silver version flashes different colors as it catches the light.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -3066,10 +3066,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "bitch-script-decal",
@@ -3078,7 +3078,7 @@ window.STINKOS_CATALOG = {
       "title": "Bitch (Script)",
       "short_description": "BITCH in sweeping cursive lettering.",
       "full_description": "A flowing handwritten-style Bitch decal with a long, dramatic underline. The photographed version uses purple vinyl, giving a sharp word a surprisingly elegant treatment.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -3301,10 +3301,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "emoji-peach-decal",
@@ -3313,7 +3313,7 @@ window.STINKOS_CATALOG = {
       "title": "Emoji Peach",
       "short_description": "A simple peach outline with a pointed leaf.",
       "full_description": "A bold, clean outline of a peach with a little leaf on top. It works as a fruit, an emoji, or whatever else you decide it's saying.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -3549,10 +3549,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "fuck-off-decal",
@@ -3561,7 +3561,7 @@ window.STINKOS_CATALOG = {
       "title": "Fuck Off",
       "short_description": "FUCK OFF in large, straightforward block lettering.",
       "full_description": "A no-nonsense cut-vinyl FUCK OFF text decal with widely spaced block capitals. The photographed versions show white and red vinyl in different sizes.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -3804,10 +3804,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "poopin-guy-decal",
@@ -3816,7 +3816,7 @@ window.STINKOS_CATALOG = {
       "title": "Poopin Guy",
       "short_description": "A squatting stick figure with a poop pile.",
       "full_description": "The familiar restroom-style pictogram takes a very different turn: a squatting figure and a little pile of poop. A simple, immediately recognizable visual joke.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -4054,10 +4054,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "asshole-cat-decal",
@@ -4066,7 +4066,7 @@ window.STINKOS_CATALOG = {
       "title": "Asshole Cat",
       "short_description": "A cat viewed from behind with its tail raised.",
       "full_description": "A minimal outline of a cat facing away, tail up and rear end on display. The photographed small version uses glow-in-the-dark vinyl.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -4294,10 +4294,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "my-dog-thinks-you-suck-decal",
@@ -4306,7 +4306,7 @@ window.STINKOS_CATALOG = {
       "title": "My Dog Thinks You Suck",
       "short_description": "Dog ears and eyes above the phrase MY DOG THINKS YOU SUCK.",
       "full_description": "A pair of perky dog ears and round eyes delivers the setup, then the lettering gets to the point: MY DOG THINKS YOU SUCK. A cheeky decal for dogs with strong opinions.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -4550,10 +4550,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "my-bird-thinks-you-suck-decal",
@@ -4562,7 +4562,7 @@ window.STINKOS_CATALOG = {
       "title": "My Bird Thinks You Suck",
       "short_description": "A cartoon bird face above MY BIRD THINKS YOU SUCK.",
       "full_description": "A little bird's head, beak, and expressive eye sit above the words MY BIRD THINKS YOU SUCK. For bird people who know their pets are absolutely judging everyone.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -4786,10 +4786,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "fuck-off-street-sign-decal",
@@ -4798,7 +4798,7 @@ window.STINKOS_CATALOG = {
       "title": "Fuck Off Street Sign",
       "short_description": "A black-and-white directional street sign reading FUCK OFF.",
       "full_description": "Styled like a rectangular road sign, this decal points decisively to the right with a white arrow and the words FUCK OFF. A different design from the plain text version.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5021,10 +5021,10 @@ window.STINKOS_CATALOG = {
           "available": true
         }
       ],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 11,
+      "has_price": true
     },
     {
       "product_id": "magical-as-fuck-sticker-sheet",
@@ -5033,7 +5033,7 @@ window.STINKOS_CATALOG = {
       "title": "Magical As Fuck Sticker Sheet",
       "short_description": "A pastel unicorn-themed sticker sheet with holographic star sparkle.",
       "full_description": "A colorful sheet of separate stickers featuring unicorns, rainbows, stars, butterflies, and gloriously blunt messages including MAGICAL AS FUCK. The photographed sheet has a holographic stars finish.",
-      "price": null,
+      "price": 7,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5135,10 +5135,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 7,
+      "price_min": 7,
+      "price_max": 7.5,
+      "has_price": true
     },
     {
       "product_id": "hotdog-slut-sticker",
@@ -5147,7 +5147,7 @@ window.STINKOS_CATALOG = {
       "title": "Hotdog Slut",
       "short_description": "A glossy hot-dog-themed sticker with cheeky lettering.",
       "full_description": "A close-up food graphic of a loaded hot dog with provocative lettering layered across it. The photographed version is a small, glossy individual sticker.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5258,10 +5258,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 8.5,
+      "has_price": true
     },
     {
       "product_id": "creampie-whore-sticker",
@@ -5270,7 +5270,7 @@ window.STINKOS_CATALOG = {
       "title": "Creampie Whore",
       "short_description": "A whipped-cream pie graphic with bold overlapping words.",
       "full_description": "A creamy dessert pie is the backdrop for oversized, deliberately suggestive lettering. This is an individual printed sticker, pictured in a small glossy finish.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5371,10 +5371,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 8.5,
+      "has_price": true
     },
     {
       "product_id": "fuck-you-so-much-heart-sticker",
@@ -5383,7 +5383,7 @@ window.STINKOS_CATALOG = {
       "title": "Fuck You So Much Heart",
       "short_description": "A pastel layered heart reading FUCK YOU SO MUCH.",
       "full_description": "Soft teal, lavender, and pink heart layers frame a not-so-soft message: FUCK YOU SO MUCH. A die-cut printed sticker with a sweet look and an unmistakable punchline.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5483,10 +5483,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 8.5,
+      "has_price": true
     },
     {
       "product_id": "go-fuck-yourself-retro-sticker",
@@ -5495,7 +5495,7 @@ window.STINKOS_CATALOG = {
       "title": "Go Fuck Yourself Retro",
       "short_description": "Retro striped lettering that reads GO FUCK YOURSELF.",
       "full_description": "A rounded retro badge with blue, gold, and coral stripes behind white script lettering. The cheerful throwback palette does nothing to soften the message.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5594,10 +5594,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 8.5,
+      "has_price": true
     },
     {
       "product_id": "cunt-multicolor-lettering-sticker",
@@ -5606,7 +5606,7 @@ window.STINKOS_CATALOG = {
       "title": "CUNT (Multicolor Lettering)",
       "short_description": "CUNT in big teal, pink, and purple letters.",
       "full_description": "Oversized block lettering spells CUNT in a bright mix of teal, pink, and purple. Simple, loud, and unapologetic in an individual printed sticker.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5705,10 +5705,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 8.5,
+      "has_price": true
     },
     {
       "product_id": "magical-as-fuck-unicorn-sticker",
@@ -5717,7 +5717,7 @@ window.STINKOS_CATALOG = {
       "title": "Magical As Fuck Unicorn",
       "short_description": "A pastel rainbow unicorn sticker reading MAGICAL AS FUCK.",
       "full_description": "A dreamy unicorn with a rainbow mane sits against a pastel, sparkly background, paired with the words MAGICAL AS FUCK. The photographed die-cut sticker has a holographic finish.",
-      "price": null,
+      "price": 3,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5825,10 +5825,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 3,
+      "price_min": 3,
+      "price_max": 8.5,
+      "has_price": true
     },
     {
       "product_id": "zombie-attack-sticker-sheet",
@@ -5837,7 +5837,7 @@ window.STINKOS_CATALOG = {
       "title": "Zombie Attack Sticker Sheet",
       "short_description": "A horror sticker sheet full of cartoon zombies and gore details.",
       "full_description": "A sheet of separate horror-themed stickers with grinning zombies, a brain, a cleaver, blood splatters, and other delightfully gruesome details. The photographed version has a matte finish.",
-      "price": null,
+      "price": 7,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -5920,10 +5920,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 7,
+      "price_min": 7,
+      "price_max": 7.5,
+      "has_price": true
     },
     {
       "product_id": "sex-drugs-rock-n-roll-sticker-sheet",
@@ -5932,7 +5932,7 @@ window.STINKOS_CATALOG = {
       "title": "Sex, Drugs & Rock 'n' Roll Sticker Sheet",
       "short_description": "A party-and-rock themed sticker sheet with many small illustrations.",
       "full_description": "An assortment of small printed stickers featuring drums, guitars, music notes, speakers, pills, leaves, beer mugs, and other adults-only party imagery. The header reads SEX, DRUGS, & ROCK 'N' ROLL.",
-      "price": null,
+      "price": 7,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6028,10 +6028,10 @@ window.STINKOS_CATALOG = {
         }
       ],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 7,
+      "price_min": 7,
+      "price_max": 7.5,
+      "has_price": true
     },
     {
       "product_id": "emoji-tongue-magnet",
@@ -6040,7 +6040,7 @@ window.STINKOS_CATALOG = {
       "title": "Emoji Tongue",
       "short_description": "A small round magnet with a cartoon mouth sticking out its tongue.",
       "full_description": "A cheeky close-up of a cartoon mouth with an oversized tongue. This small round magnet is an easy visual punchline.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6112,10 +6112,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     },
     {
       "product_id": "fuck-off-rainbow-magnet",
@@ -6124,7 +6124,7 @@ window.STINKOS_CATALOG = {
       "title": "Fuck Off Rainbow",
       "short_description": "A small round magnet with a rainbow and FUCK OFF lettering.",
       "full_description": "A bright rainbow and clouds frame the words FUCK OFF on a small round magnet. Sunshine-and-rainbows energy, with the opposite message.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6195,10 +6195,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     },
     {
       "product_id": "poop-emoji-magnet",
@@ -6207,7 +6207,7 @@ window.STINKOS_CATALOG = {
       "title": "Poop Emoji",
       "short_description": "A smiling poop emoji on a small round magnet.",
       "full_description": "A cute, smiling cartoon poop with rosy cheeks and a little drool. A small round magnet that makes bathroom humor look oddly adorable.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6281,10 +6281,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     },
     {
       "product_id": "eat-emoji-magnet",
@@ -6293,7 +6293,7 @@ window.STINKOS_CATALOG = {
       "title": "Eat Emoji",
       "short_description": "A plate, fork, and knife symbol on a small round magnet.",
       "full_description": "A simple place setting, drawn with a plate, fork, and knife. This small round magnet can stand alone or be paired with the Poop Emoji magnet to spell out EAT SHIT visually.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6366,10 +6366,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     },
     {
       "product_id": "go-fuck-yourself-retro-magnet",
@@ -6378,7 +6378,7 @@ window.STINKOS_CATALOG = {
       "title": "Go Fuck Yourself Retro",
       "short_description": "A small round magnet with retro GO FUCK YOURSELF typography.",
       "full_description": "The retro striped badge design turns GO FUCK YOURSELF into a cheerful-looking piece of refrigerator commentary. A small round magnet with white script and vintage-style colors.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6458,10 +6458,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     },
     {
       "product_id": "eggplant-emoji-magnet",
@@ -6470,7 +6470,7 @@ window.STINKOS_CATALOG = {
       "title": "Eggplant Emoji",
       "short_description": "A purple eggplant emoji with a green stem on a round magnet.",
       "full_description": "A bright purple eggplant with a green leafy top, printed on a small round magnet. Subtlety was never the point.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6553,10 +6553,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     },
     {
       "product_id": "fuck-you-so-much-heart-magnet",
@@ -6565,7 +6565,7 @@ window.STINKOS_CATALOG = {
       "title": "Fuck You So Much Heart",
       "short_description": "A small round magnet with a layered pastel heart and blunt lettering.",
       "full_description": "Candy-colored teal, pink, and lavender hearts surround the phrase FUCK YOU SO MUCH. A small round magnet pairing sweet graphics with a very different sentiment.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6656,10 +6656,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     },
     {
       "product_id": "emoji-peach-magnet",
@@ -6668,7 +6668,7 @@ window.STINKOS_CATALOG = {
       "title": "Emoji Peach",
       "short_description": "A pink peach emoji on a small round magnet.",
       "full_description": "A peachy-pink fruit with green leaves on a small round magnet. Playful fruit artwork with just enough room for a second interpretation.",
-      "price": null,
+      "price": 2,
       "price_override": null,
       "compare_at_price": null,
       "status": "Active",
@@ -6741,10 +6741,10 @@ window.STINKOS_CATALOG = {
       ],
       "finish_options": [],
       "vinyl_options": [],
-      "starting_price": null,
-      "price_min": null,
-      "price_max": null,
-      "has_price": false
+      "starting_price": 2,
+      "price_min": 2,
+      "price_max": 4,
+      "has_price": true
     }
   ],
   "categories": [
@@ -7589,169 +7589,169 @@ window.STINKOS_CATALOG = {
       "product_type": "decal",
       "size_id": "small",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 3
     },
     {
       "product_type": "decal",
       "size_id": "medium",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 5
     },
     {
       "product_type": "decal",
       "size_id": "large",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 7
     },
     {
       "product_type": "decal",
       "size_id": "xl",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 9
     },
     {
       "product_type": "decal",
       "size_id": "small",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 3.5
     },
     {
       "product_type": "decal",
       "size_id": "medium",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 6
     },
     {
       "product_type": "decal",
       "size_id": "large",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 8.5
     },
     {
       "product_type": "decal",
       "size_id": "xl",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 11
     },
     {
       "product_type": "decal",
       "size_id": "small",
       "pricing_tier": "Layered",
-      "price": null
+      "price": 4
     },
     {
       "product_type": "decal",
       "size_id": "medium",
       "pricing_tier": "Layered",
-      "price": null
+      "price": 6
     },
     {
       "product_type": "decal",
       "size_id": "large",
       "pricing_tier": "Layered",
-      "price": null
+      "price": 8
     },
     {
       "product_type": "decal",
       "size_id": "xl",
       "pricing_tier": "Layered",
-      "price": null
+      "price": 10
     },
     {
       "product_type": "sticker",
       "size_id": "small",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 3
     },
     {
       "product_type": "sticker",
       "size_id": "medium",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 5
     },
     {
       "product_type": "sticker",
       "size_id": "large",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 7
     },
     {
       "product_type": "sticker",
       "size_id": "small",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 3.5
     },
     {
       "product_type": "sticker",
       "size_id": "medium",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 6
     },
     {
       "product_type": "sticker",
       "size_id": "large",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 8.5
     },
     {
       "product_type": "sticker sheet",
       "size_id": "one-size",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 7
     },
     {
       "product_type": "sticker sheet",
       "size_id": "one-size",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 7.5
     },
     {
       "product_type": "sticker multi-pack",
       "size_id": "one-size",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 3.5
     },
     {
       "product_type": "sticker multi-pack",
       "size_id": "one-size",
       "pricing_tier": "Premium",
-      "price": null
+      "price": 4
     },
     {
       "product_type": "magnet",
       "size_id": "small-round",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 2
     },
     {
       "product_type": "magnet",
       "size_id": "large-square",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 3
     },
     {
       "product_type": "magnet",
       "size_id": "heart",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 4
     },
     {
       "product_type": "pin",
       "size_id": "small-round",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 2
     },
     {
       "product_type": "pin",
       "size_id": "large-square",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 3
     },
     {
       "product_type": "pin",
       "size_id": "heart",
       "pricing_tier": "Standard",
-      "price": null
+      "price": 4
     }
   ],
   "new_arrivals": [
