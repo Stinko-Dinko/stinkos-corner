@@ -1717,7 +1717,9 @@
  const finishRows=uniqueOptions([...vinylRows.map(v=>({value:v.finish,label:v.finish})),...stickerRows.map(v=>({value:v.name,label:v.name}))],'value','label');
  if(finishRows.length) detailFilters.push({key:'finish',label:'Finish',field:'__finish',options:finishRows});
  const typeLabels={decal:'Decals',sticker:'Stickers','sticker sheet':'Sticker Sheets','sticker multi-pack':'Sticker Multi-Packs',magnet:'Magnets',pin:'Pins'};
- const typeValues=[...new Set(products.map(p=>String(p.product_type||'').trim()).filter(Boolean))];
+ const catalogTypes=(catalog?.products||[]).map(p=>String(p.product_type||'').trim());
+ const categoryTypes=(catalog?.categories||[]).filter(c=>c.active).flatMap(c=>String(c.default_product_type||'').split(',').map(t=>t.trim()));
+ const typeValues=[...new Set([...catalogTypes,...categoryTypes].filter(Boolean))].sort((a,b)=>Object.keys(typeLabels).indexOf(a)-Object.keys(typeLabels).indexOf(b));
  const productTypeFilter={key:'product_type',label:'Product Type',field:'product_type',options:typeValues.map(value=>({value,label:typeLabels[value]||value}))};
  const filters=[productTypeFilter,...baseFilters.filter(f=>['collection','character','category'].includes(f.key))];
  const selected={}; let visible=20;let revealObserver;
